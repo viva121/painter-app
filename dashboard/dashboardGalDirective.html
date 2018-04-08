@@ -3,21 +3,22 @@
     
                             <div class="btn-group" role="group" aria-label="Galleries">
                                     <button type="button" class="btn btn-secondary" ng-click="showAddImg()">Add Painting</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="sortByYear(painting)">Sort by date</button>
-                                    <button type="button" class="btn btn-secondary"ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
-                                    <button type="button" class="btn btn-secondary"ng-click="filterGal = {gallery: 'Still Life'}">Still Life</button>
-                                    <button type="button" class="btn btn-secondary">Landscape</button>
-                                    <button type="button" class="btn btn-secondary">Seascape</button>
-                                    <button type="button" class="btn btn-secondary">Nude</button>
-                                    <button type="button" class="btn btn-secondary">Graphics</button>
-                                    <button type="button" class="btn btn-secondary">Portrait</button>
-                                    <button type="button" class="btn btn-secondary">Voyage</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="sortBy('year')">Sort by date</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Landscape'}">Landscape</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Seascape'}">Seascape</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Nude'}">Nude</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Graphics'}">Graphics</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Portrait'}">Portrait</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = undefined">Show All</button>
                             </div>
                            
     </div>        
 <div class="row">
     <div class="cards-dash card-columns">
-            <div class="card entry-box" ng-repeat="painting in paintings  | filter: filterGal | orderBy: sortByYear"  >
+            <div class="card entry-box" ng-repeat="painting in paintings  | filter: filterGal | orderBy: propertyName : reverse"  >
                     <div ><img class="card-img-top" ng-src="{{painting.image}}" alt="{{painting.title}}">
                         <div class="overlay-title-category-hover" ng-click="showEditImg(painting)">
           

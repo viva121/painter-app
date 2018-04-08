@@ -67,10 +67,14 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
            $scope.hideModalEdit = true;
       }
 
-      $scope.sortByYear = function(painting) {
-        // var painting = $scope.painting
-         return painting.year;
-     }
+      $scope.propertyName = 'painting.year';
+      $scope.reverse = true;
+ 
+
+  $scope.sortBy = function(propertyName) {
+    $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+    $scope.propertyName = propertyName;
+  };
   
     //  Exhibitions /////////////////////////////////////////////////////////////////////////
       $scope.exhibitions = [];
