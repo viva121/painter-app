@@ -1,0 +1,111 @@
+<div class="container-fluid mt-nav mx-3">
+    <div class="row galleries-btn-gr  align-items-center justify-content-center">
+    
+                            <div class="btn-group" role="group" aria-label="Galleries">
+                                    <button type="button" class="btn btn-secondary" ng-click="showAddImg()">Add Painting</button>
+                                    <button type="button" class="btn btn-secondary">Sort by date</button>
+                                    <button type="button" class="btn btn-secondary">Still Life</button>
+                                    <button type="button" class="btn btn-secondary">Landscape</button>
+                                    <button type="button" class="btn btn-secondary">Seascape</button>
+                                    <button type="button" class="btn btn-secondary">Nude</button>
+                                    <button type="button" class="btn btn-secondary">Graphics</button>
+                                    <button type="button" class="btn btn-secondary">Portrait</button>
+                                    <button type="button" class="btn btn-secondary">Voyage</button>
+                            </div>
+                           
+    </div>        
+<div class="row">
+    <div class="cards-dash card-columns">
+            <div class="card entry-box" ng-repeat="painting in paintings"  >
+                    <div ><img class="card-img-top" ng-src="{{painting.image}}" alt="{{painting.title}}">
+                        <div class="overlay-title-category-hover" ng-click="showEditImg(painting)">
+          
+                            <div class="hvr-txt-align">
+                                      
+                                      <div><i class="fas fa-edit"></i></div>	
+                                    
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+            </div><!-- /card -->
+    </div>
+
+</div>
+<!-- Modal Edit Painting -->
+<div class="modal-edit-gal" ng-hide="hideModalEdit">
+    <div class = "row">
+            <div class="col-sm-11">
+                            <h4>Edit Painting Details</h4>
+            </div>
+            <div class="col-sm-1"><span class="float-right" ng-click="hideEditImg()"><i class="fas fa-window-close"></i></span></div>
+    </div>  
+
+<div class = "row">
+    <div class="col-md-5">
+            <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control input-img" id="" ng-model="title"  placeholder="Enter Title">
+                      <input type="text" class="form-control input-img" id="" ng-model="size" placeholder="Enter Size">
+                      <input type="text" class="form-control input-img" id="" ng-model="technique" placeholder="Enter Technique">
+                      <input type="text" class="form-control input-img" id="" ng-model="year" placeholder="Enter Year">
+                      <input type="text" class="form-control input-img" id="" ng-model="gallery" placeholder="Enter Gallery">
+                    </div>
+                    
+                    <button type="submit" ng-click="saveEditImg()" class="btn btn-secondary btn-block">Save Changes</button>
+            </form>
+            <div class="mt-2"><a href=''  ng-click="deleteItem()">Delete forever</a></div>
+    </div>
+    <div class="col-md-7">
+            <img class="modalEdit" src="{{image}}" alt="{{title}}">
+        </div>
+
+</div>
+</div>
+</div>
+<!-- Modal Add New Painting -->
+<div class="modal-add-img" ng-hide="hideModal">
+    <div class = "row">
+         <div class="col-sm-11">
+                <h4>Add New Painting</h4>
+         </div>
+         <div class="col-sm-1"><span class="float-right" ng-click="hideAddImg()"><i class="fas fa-window-close"></i></span></div>
+        </div>           
+        <div class = "row">
+            <div class="col-lg-12">
+                    <form>
+                            <div class="form-group">
+                              <input type="text" class="form-control input-img" ng-model="title" id=""  placeholder="Enter Title">
+                              <div class="custom-file  input-img">
+                                    <input type="file" class="custom-file-input" ng-model="editItem._attachments_uri.image" accept="image/*" app-filereader id="customFile" name="myImage">
+                                    <label class="custom-file-label" for="customFile">Choose image file...</label>
+                                </div>
+                              <input type="text" class="form-control input-img" ng-model="size" id=""  placeholder="Enter Size">
+                              <input type="text" class="form-control input-img" ng-model="technique" id=""  placeholder="Enter Technique">
+                              <input type="text" class="form-control input-img" ng-model="year" id=""  placeholder="Enter Year">
+                              <select class="form-control" ng-model="gallery" id="">
+                                            <option value="" disabled selected>Sellect Gallery</option>
+                                            <option>Flowers</option>
+                                            <option>Still Life</option>
+                                            <option>Landscape</option>
+                                            <option>Seascape</option>
+                                            <option>Nude</option>
+                                            <option>Graphics</option>
+                                            <option>Portrait</option>
+                                            <option>Voyage</option>
+                              </select>
+                             <!-- <input type="text" class="form-control input-img"   id=""  placeholder="Enter Gallery"> -->
+                            </div>
+                            
+                            <button type="submit" class="btn btn-secondary btn-block" ng-click="addImg(name, editItem._attachments_uri.image, title, size, technique, year, gallery)">Save Changes</button>
+                    </form>
+                    
+            </div>
+            <div class="col-md-8">
+    
+                </div>
+    
+        </div>
+</div>

@@ -1,0 +1,20 @@
+<nav-bar></nav-bar>
+<div class="container mt-nav">
+    <div class="row row-exhibit">
+        <div class="col">
+                <h2 class="display-3">Exhibitions</h2>
+        </div>
+    </div>  <!-- /row -->    
+    <div class="row row-exhibit" ng-repeat="exhibition in exhibitions">
+      <div class="col-sm img-exhibit">
+        <img ng-src="{{exhibition.image}}">
+      </div>
+      <div class="col-sm-9">
+        <h6 class="display-4">{{exhibition.name}}</h6>
+        <small>{{exhibition.time}}</small>
+        <p>{{exhibition.place}}</p>
+        <p>{{exhibition.txt}}</p>
+      </div>
+    </div> <!-- /row -->
+    
+</div>

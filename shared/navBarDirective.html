@@ -1,0 +1,41 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+            <a class="navbar-brand" href="#!/"><img src="assets/images/s-lukash-dark.png" width="200" alt="S. Lukash"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                
+               <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Galleries
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Flowers</a>
+                    <a class="dropdown-item" href="#">Still Life</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Landscape</a>
+                  </div>
+                </li> -->
+                <li class="nav-item {{urlGalleries()}}" ng-class="active : urlGalleries() == true" >
+                        <a class="nav-link"  href="#!/galleries">Galleries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item {{urlExhb()}}" >
+                  <a class="nav-link" href="#!/exhibitions">Exhibitions</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="#">My History</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="#">Contacts</a>
+                </li>
+              </ul>
+             
+            </div>
+      </div>
+</nav>

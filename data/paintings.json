@@ -1,0 +1,49 @@
+[
+    { "name":"Svetlana Lukash", 
+      "image": "assets/paintings/city.jpg", 
+      "title": "Tel Aviv", 
+      "size": "70x50cm", 
+      "technique":"Watercolor",
+      "year": 2017,
+      "gallery":"Landscape",
+      "comments":""
+}, 
+
+{ "name":"Svetlana Lukash", 
+    "image": "assets/paintings/flowers.jpg", 
+    "title": "Flowers", 
+    "size": "70x50cm", 
+    "technique":"Watercolor",
+    "year": 2010,
+    "gallery":"Flowers",
+    "comments":""
+},  
+{ "name":"Svetlana Lukash", 
+    "image": "assets/paintings/flowers-2.jpg", 
+    "title": "Flowers", 
+    "size": "70x50cm", 
+    "technique":"Watercolor",
+    "year": 2010,
+    "gallery":"Flowers",
+    "comments":""
+},
+{ "name":"Svetlana Lukash", 
+    "image": "assets/paintings/shoes.jpg", 
+    "title": "Shoes", 
+    "size": "70x50cm", 
+    "technique":"Watercolor",
+    "year":2006,
+    "gallery":"Still Life",
+    "comments":""
+},
+{ "name":"Svetlana Lukash", 
+    "image": "assets/paintings/yoel-netz.jpg", 
+    "title": "Yoel Netz", 
+    "size": "75x55cm", 
+    "technique":"Watercolor",
+    "year":2017,
+    "gallery":"Portrait",
+    "comments":""
+}                     
+
+]

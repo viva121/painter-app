@@ -1,0 +1,113 @@
+<nav-bar></nav-bar>
+<div class="container mt-nav">
+    <div class="row  row-exhibit" >
+        <div class="col">
+            <h2 class="display-3">Galleries</h2>
+        </div>
+    <div class="col galleries-btn-gr">
+            <div class="btn-group" role="group" aria-label="Galleries">
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = null || undefined">All</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Landscape'}">Landscape</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Seascape'}">Seascape</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Nude'}">Nude</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Graphics'}">Graphics</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Portrait'}">Portrait</button>
+                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</button>
+            </div>
+    </div>       
+    </div>
+    <div class="row gallery ">
+        <div class="card-columns">
+                <div class="card entry-box" ng-repeat="painting in paintings | filter: filterGal"  >
+                        <div ng-click="showImgL(painting)" data-toggle="modal" data-target="#exampleModal"><img class="card-img-top" ng-src="{{painting.image}}" alt="{{painting.title}}">
+                            <div class="overlay-title-category-hover">
+              
+                                <div class="hvr-txt-align">
+                                          
+                                          <div><i class="fas fa-search-plus"></i></div>	
+                                        
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="card-body">
+                          <h6 class="card-title">{{painting.title}}</h6>
+                        </div>
+                        <div class="card-footer">
+                         <p class="card-text"><small class="text-muted">{{painting.size}} <span class="card-material" >{{painting.technique}}</span></small></p>
+                        </div>
+                        
+                </div><!-- /card -->
+        </div>
+
+        <div class="modal-img-l" ng-hide="hideModal">
+            <div class = "row">
+                 <div class="col">
+                        <h4>{{title}}</h4>
+                 </div>
+                 <div class="col"><span class="float-right" ng-click="hideImgL()"><i class="fas fa-window-close"></i></span></div>
+                </div>           
+                <div class = "row">
+                    <div class="col-sm-12">
+                        <img src="{{image}}" alt="{{title}}">   
+                            
+                    </div>
+                    <div class="col-sm-12">
+                        
+                        </div>
+            
+                </div>
+        </div>
+    </div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img src="{{image}}" alt="{{title}}">
+        </div>
+        <div class="modal-footer">
+            <table class="table table-hover my-2">
+            <tbody>
+              <tr>
+                <th scope="row">Size:</th>
+                <td>{{size}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Technique:</th>
+                <td>{{technique}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Year:</th>
+                <td>{{year}}</td>
+              </tr>
+              <tr>
+                <td scope="row"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></td>
+                <td><button type="button" class="btn btn-primary">Contact the Author</button></td>
+                  </tr>
+            </tbody>
+          </table>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div> 
+
+
+
+<footer-p></footer-p>              

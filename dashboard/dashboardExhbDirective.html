@@ -1,0 +1,40 @@
+<div class="container mt-nav">
+    <div class="row mb-3">
+      <div class="col-xl-12">
+        <button type="submit" ng-click="addNewExhb()" class="btn btn-secondary btn-block">Add Exhibition</button>
+      </div>
+    </div>  
+    <div id="accordion row">
+            <div class="card" ng-repeat="exhibition in exhibitions">
+              <div class="card-header" id="heading{{exhibitions.indexOf(exhibition)}}">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{exhibitions.indexOf(exhibition)}}"  aria-expanded="{{ exhibitions.indexOf(exhibition) == 0 ? 'true' : 'false'}}"   aria-controls="collapse{{exhibitions.indexOf(exhibition)}}">
+                    {{exhibition.name}}
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapse{{exhibitions.indexOf(exhibition)}}" class="collapse " ng-class="{show: exhibitions.indexOf(exhibition) == 0}" aria-labelledby="heading{{exhibitions.indexOf(exhibition)}}" data-parent="#accordion">
+                <div class="card-body">
+                    <div ></div>
+                    <form>
+                        <div class="form-group row">
+                            <input type="text" class="form-control input-img" id="" ng-model="exhibition.name" placeholder="Enter Name">
+                          <input type="text" class="form-control input-img" id="" ng-model="exhibition.image" placeholder="Enter Image">
+                          <input type="text" class="form-control input-img" id="" ng-model="exhibition.time" placeholder="Enter Time">
+                          <input type="text" class="form-control input-img" id="" ng-model="exhibition.place" placeholder="Enter Place">
+                         <!-- <input type="textarea" class="form-control input-img"  rows="3" id="" ng-model="exhibition.txt" placeholder="Enter Text"> -->
+                          <textarea class="form-control input-img" id="" rows="3"ng-model="exhibition.txt" placeholder="Enter Text"></textarea>
+                        </div>
+                        
+                        <button type="submit" ng-click="saveEditExhb(exhibition)" class="btn btn-secondary btn-block">Save Changes</button>
+                </form>
+                <div class="mt-2"><a href=''  ng-click="deleteExhbt(exhibition)">Delete forever</a></div>
+                </div>
+              </div>
+            </div>
+            
+            
+    </div>
+    
+</div>
