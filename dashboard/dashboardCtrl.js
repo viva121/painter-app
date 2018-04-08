@@ -66,6 +66,12 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
       $scope.hideEditImg = function() {
            $scope.hideModalEdit = true;
       }
+
+      $scope.sortByYear = function(painting) {
+        // var painting = $scope.painting
+         return painting.year;
+     }
+  
     //  Exhibitions /////////////////////////////////////////////////////////////////////////
       $scope.exhibitions = [];
       exhibitService.loadExibit().then(function() {
@@ -125,6 +131,7 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
         $scope.deleteExhbt = function(exhibition) {
                 $scope.exhibitions.splice($scope.exhibitions.indexOf(exhibition), 1);
         }   
-     
+
+       
 
 });

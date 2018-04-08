@@ -3,8 +3,9 @@
     
                             <div class="btn-group" role="group" aria-label="Galleries">
                                     <button type="button" class="btn btn-secondary" ng-click="showAddImg()">Add Painting</button>
-                                    <button type="button" class="btn btn-secondary">Sort by date</button>
-                                    <button type="button" class="btn btn-secondary">Still Life</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="sortByYear(painting)">Sort by date</button>
+                                    <button type="button" class="btn btn-secondary"ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
+                                    <button type="button" class="btn btn-secondary"ng-click="filterGal = {gallery: 'Still Life'}">Still Life</button>
                                     <button type="button" class="btn btn-secondary">Landscape</button>
                                     <button type="button" class="btn btn-secondary">Seascape</button>
                                     <button type="button" class="btn btn-secondary">Nude</button>
@@ -16,7 +17,7 @@
     </div>        
 <div class="row">
     <div class="cards-dash card-columns">
-            <div class="card entry-box" ng-repeat="painting in paintings"  >
+            <div class="card entry-box" ng-repeat="painting in paintings  | filter: filterGal | orderBy: sortByYear"  >
                     <div ><img class="card-img-top" ng-src="{{painting.image}}" alt="{{painting.title}}">
                         <div class="overlay-title-category-hover" ng-click="showEditImg(painting)">
           
