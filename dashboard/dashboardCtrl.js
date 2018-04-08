@@ -125,18 +125,6 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
         $scope.deleteExhbt = function(exhibition) {
                 $scope.exhibitions.splice($scope.exhibitions.indexOf(exhibition), 1);
         }   
-        
-        $scope.checkRoutParams = function() {
-            if($scope.showPnt) {
-                var clss = "active";
-            }
-            return clss;
-        }
-        $scope.checkRoutParamsEx = function() {
-            if($scope.showExhb) {
-                var clss = "active";
-            }
-            return clss;
-        }
+     
 
 });
