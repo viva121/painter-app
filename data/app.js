@@ -17,7 +17,11 @@ app.config(function($routeProvider) {
     }).when ("/exhibitions", {
       templateUrl: "exhibitions/exhibitions.html",
       controller: "exhibitionsCtrl"
+    }).when ("/contacts", {
+      templateUrl: "contacts/contacts.html",
+      controller: "contactsCtrl"
     }).otherwise({
         redirectTo: "/"
     });
+    
 });
