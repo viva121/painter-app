@@ -6,24 +6,39 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
     
     
 // Add New Image
+
+/* show file value after file select */
+/*
+$scope.showImgFile = function() {
+    editItem._attachments_uri.image = $scope.editItem._attachments_uri.image;
+}
+
+$('.my-file-input').on('change',function(){
+  
+    $(this).next('.form-control-file').addClass("selected").html($(this).val());
+    })
+*/
+    $scope.integerval = /^\d*$/;
+
     $scope.addImg = function(name, image, title, size, technique, year, gallery) {
         //console.log(name);
-      /*  if(name == undefined || famName == undefined || image == undefined || imbdLink == undefined || bday == undefined) {
-            $scope.errMsg = true;
+      if(image == "" || title == undefined || size == undefined || technique == undefined || year == undefined || gallery == undefined) {
+           
+        $scope.errMsg = true;
             //console.log(errMsg);
-            return;
+        return;
         }
-        $scope.errMsg = false; */
+        $scope.errMsg = false; 
         name = "Svetlana Lukash";
         var newImg = new paintingService.Painting(name, image, title, size, technique, year, gallery);
         newImg.name = "Svetlana Lukash";
         $scope.paintings.push(newImg);
-        $scope.title = "";
+        $scope.title = undefined;
         $scope.editItem._attachments_uri.image = "";
-        $scope.size = "";
-        $scope.technique = "";
-        $scope.year = "";
-        $scope.gallery = "";
+        $scope.size = undefined;
+        $scope.technique = undefined;
+        $scope.year = undefined;
+        $scope.gallery = undefined;
        }
 
 // Edit Existing Image
@@ -46,6 +61,13 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
  
       $scope.showAddImg = function() {
             $scope.hideModal = false;
+            $scope.hideModalEdit = true;
+            $scope.title = undefined;
+           // $scope.editItem._attachments_uri.image = "";
+            $scope.size = undefined;
+            $scope.technique = undefined;
+            $scope.year = undefined;
+            $scope.gallery = undefined;
       }
       $scope.hideAddImg = function() {
            $scope.hideModal = true;
@@ -54,8 +76,9 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
       $scope.hideModalEdit = true;
 
       $scope.showEditImg = function(painting) {
-            $scope.selectedItem = painting;
+            $scope.hideModal = true;
             $scope.hideModalEdit = false;
+            $scope.selectedItem = painting;
             $scope.title = painting.title;
             $scope.image = painting.image;
             $scope.size = painting.size;

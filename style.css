@@ -72,6 +72,12 @@ div.galleries-btn-gr {
 .card-material {
     float:right; line-height:2em;
 }
+/* Alerts ///////////////////////////////////////////////// */
+.alert-secondary.alert-pnt {
+    background-color: #ff9082;
+    color:#580b00;
+}
+/* Modals ///////////////////////////////////////////////// */
 .card-popup {
     position: absolute;
     padding: 10px;

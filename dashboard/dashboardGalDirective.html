@@ -52,7 +52,8 @@
                       <input type="text" class="form-control input-img" id="" ng-model="title"  placeholder="Enter Title">
                       <input type="text" class="form-control input-img" id="" ng-model="size" placeholder="Enter Size">
                       <input type="text" class="form-control input-img" id="" ng-model="technique" placeholder="Enter Technique">
-                      <input type="text" class="form-control input-img" id="" ng-model="year" placeholder="Enter Year">
+                      <input type="text" class="form-control input-img" id="" ng-model="year" placeholder="Enter Year" name="year" step="1" min="2" max="4"  required>
+                    <!--  <span ng-show="form.year.input.$error.number">A number required!</span> -->
                       <input type="text" class="form-control input-img" id="" ng-model="gallery" placeholder="Enter Gallery">
                     </div>
                     
@@ -81,7 +82,7 @@
                             <div class="form-group">
                               <input type="text" class="form-control input-img" ng-model="title" id=""  placeholder="Enter Title">
                               <div class="custom-file  input-img">
-                                    <input type="file" class="custom-file-input" ng-model="editItem._attachments_uri.image" accept="image/*" app-filereader id="customFile" name="myImage">
+                                    <input type="file" class="custom-file-input my-file-input" ng-model="editItem._attachments_uri.image" ng-change="showImgFile()" accept="image/*" app-filereader id="customFile" name="myImage">
                                     <label class="custom-file-label" for="customFile">Choose image file...</label>
                                 </div>
                               <input type="text" class="form-control input-img" ng-model="size" id=""  placeholder="Enter Size">
@@ -100,7 +101,9 @@
                               </select>
                              <!-- <input type="text" class="form-control input-img"   id=""  placeholder="Enter Gallery"> -->
                             </div>
-                            
+                            <div class="alert alert-secondary alert-pnt" role="alert" ng-show="errMsg">
+                                Please fill in all fields!
+                              </div>
                             <button type="submit" class="btn btn-secondary btn-block" ng-click="addImg(name, editItem._attachments_uri.image, title, size, technique, year, gallery)">Save Changes</button>
                     </form>
                     
