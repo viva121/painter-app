@@ -1,10 +1,26 @@
 <div class="container-fluid mt-nav mx-3">
-    <div class="row galleries-btn-gr  align-items-center justify-content-center">
+    <div class="row row-exhibit galleries-btn-gr  align-items-center justify-content-center">
     
                             <div class="btn-group" role="group" aria-label="Galleries">
                                     <button type="button" class="btn btn-secondary" ng-click="showAddImg()">Add Painting</button>
                                     <button type="button" class="btn btn-secondary" ng-click="sortBy('year')">Sort by date</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle my-btn-group-responsive" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Galleries
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Landscape'}">Landscape</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Seascape'}">Seascape</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Nude'}">Nude</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Graphics'}">Graphics</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Portrait'}">Portrait</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = undefined">Show All</a>
+                                        </div>
+                                      </div>
+                                  <!--  <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
                                     <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</button>
                                     <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Landscape'}">Landscape</button>
                                     <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Seascape'}">Seascape</button>
@@ -12,7 +28,7 @@
                                     <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Graphics'}">Graphics</button>
                                     <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Portrait'}">Portrait</button>
                                     <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = undefined">Show All</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = undefined">Show All</button> -->
                             </div>
                            
     </div>        
@@ -80,15 +96,15 @@
             <div class="col-lg-12">
                     <form>
                             <div class="form-group">
-                              <input type="text" class="form-control input-img" ng-model="title" id=""  placeholder="Enter Title">
+                              <input type="text" class="form-control input-img" ng-model="title" id=""  placeholder="Enter Title" required>
                               <div class="custom-file  input-img">
-                                    <input type="file" class="custom-file-input my-file-input" ng-model="editItem._attachments_uri.image" ng-change="showImgFile()" accept="image/*" app-filereader id="customFile" name="myImage">
+                                    <input type="file" class="custom-file-input my-file-input" ng-model="editItem._attachments_uri.image" ng-change="showImgFile()" accept="image/*" app-filereader id="customFile" name="myImage"  required>
                                     <label class="custom-file-label" for="customFile">Choose image file...</label>
                                 </div>
-                              <input type="text" class="form-control input-img" ng-model="size" id=""  placeholder="Enter Size">
-                              <input type="text" class="form-control input-img" ng-model="technique" id=""  placeholder="Enter Technique">
-                              <input type="text" class="form-control input-img" ng-model="year" id=""  placeholder="Enter Year">
-                              <select class="form-control" ng-model="gallery" id="">
+                              <input type="text" class="form-control input-img" ng-model="size" id=""  placeholder="Enter Size"  required>
+                              <input type="text" class="form-control input-img" ng-model="technique" id=""  placeholder="Enter Technique"  required>
+                              <input type="number" class="form-control input-img" ng-model="year" id=""  placeholder="Enter Year"  required>
+                              <select class="form-control" ng-model="gallery" id=""  required>
                                             <option value="" disabled selected>Sellect Gallery</option>
                                             <option>Flowers</option>
                                             <option>Still Life</option>

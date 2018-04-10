@@ -57,6 +57,10 @@ div.galleries-btn-gr {
 .active a {
     color: #e83a23 !important;
 }
+/* btn-group dropdown /////////////////////// */
+.btn-group .my-btn-group-responsive {
+    border-radius: 0 4px 4px 0;
+  }
 
 .gallery {
     position: relative;

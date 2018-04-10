@@ -8,21 +8,23 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
 // Add New Image
 
 /* show file value after file select */
-/*
-$scope.showImgFile = function() {
-    editItem._attachments_uri.image = $scope.editItem._attachments_uri.image;
-}
 
+//$scope.editItem = {};
+$scope.showImgFile = function() {
+    console.log("showImgFile");
+    console.log($scope.editItem._attachments_uri.image);
+}
+/*
 $('.my-file-input').on('change',function(){
   
     $(this).next('.form-control-file').addClass("selected").html($(this).val());
     })
-*/
-    $scope.integerval = /^\d*$/;
 
+    $scope.integerval = /^\d*$/;
+*/
     $scope.addImg = function(name, image, title, size, technique, year, gallery) {
         //console.log(name);
-      if(image == "" || title == undefined || size == undefined || technique == undefined || year == undefined || gallery == undefined) {
+      if(image == "" || image == undefined || title == undefined ||  title == "" || size == undefined || size == "" || technique == undefined || technique == "" || year == undefined ||  year == "" || gallery == undefined || gallery == "") {
            
         $scope.errMsg = true;
             //console.log(errMsg);
@@ -34,7 +36,8 @@ $('.my-file-input').on('change',function(){
         newImg.name = "Svetlana Lukash";
         $scope.paintings.push(newImg);
         $scope.title = undefined;
-        $scope.editItem._attachments_uri.image = "";
+        $scope.editItem._attachments_uri.image = undefined;
+        $('#customFile').val("");
         $scope.size = undefined;
         $scope.technique = undefined;
         $scope.year = undefined;
@@ -61,9 +64,10 @@ $('.my-file-input').on('change',function(){
  
       $scope.showAddImg = function() {
             $scope.hideModal = false;
+            $scope.errMsg = false;
             $scope.hideModalEdit = true;
             $scope.title = undefined;
-           // $scope.editItem._attachments_uri.image = "";
+            // $scope.editItem._attachments_uri.image = "";
             $scope.size = undefined;
             $scope.technique = undefined;
             $scope.year = undefined;
