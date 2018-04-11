@@ -10,10 +10,10 @@ app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, 
 /* show file value after file select */
 
 //$scope.editItem = {};
-$scope.showImgFile = function() {
-    console.log("showImgFile");
-    console.log($scope.editItem._attachments_uri.image);
-}
+//$scope.showImgFile = function() {
+//    console.log("showImgFile");
+//    console.log($scope.editItem._attachments_uri.image);
+//}
 /*
 $('.my-file-input').on('change',function(){
   
@@ -94,6 +94,11 @@ $('.my-file-input').on('change',function(){
            $scope.hideModalEdit = true;
       }
 
+      $scope.imgTxtP = "Choose image file...";
+      $scope.showImgNameP = function() {
+      $scope.imgTxtP = "File is chosen" //$scope.editItem._attachments_uri_E.image;
+      }
+
       $scope.propertyName = 'painting.year';
       $scope.reverse = true;
  
@@ -126,6 +131,11 @@ $('.my-file-input').on('change',function(){
             $scope.showExhb = false;
         }
 
+      //  $scope.imgTxt = "Choose image file...";
+      //  $scope.showImgName = function() {
+      //  $scope.imgTxt = "File is chosen" //$scope.editItem._attachments_uri_E.image;
+      //  }
+
         $scope.showExbtDetails = function(exhibition) {
             $scope.name =  exhibition.name;
             $scope.image =  exhibition.image;
@@ -134,26 +144,36 @@ $('.my-file-input').on('change',function(){
             $scope.txt =  exhibition.txt;
           }
 
+        $scope.errMsgE = false; 
         $scope.saveEditExhb = function(exhibition) {
-            exhibitService.exhibitions[exhibitService.exhibitions.indexOf($scope.exhibition)].name = $scope.name;
-            exhibitService.exhibitions[exhibitService.exhibitions.indexOf($scope.exhibition)].image = $scope.image;
-            exhibitService.exhibitions[exhibitService.exhibitions.indexOf($scope.exhibition)].time = $scope.time;
-            exhibitService.exhibitions[exhibitService.exhibitions.indexOf($scope.exhibition)].place = $scope.place;
-            exhibitService.exhibitions[exhibitService.exhibitions.indexOf($scope.exhibition)].txt = $scope.txt;
+            
+            if(exhibition.name == undefined || exhibition.name == "" || exhibition.image == undefined || exhibition.image == "" || exhibition.time == undefined || exhibition.time == "" ||  exhibition.place == undefined || exhibition.place == "" || exhibition.txt == undefined || exhibition.txt == "") {
+                     $scope.errMsgE = true;
+                     console.log($scope.errMsgE);
+                     return;
+            }
+            $scope.errMsgE = false; 
+            exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].name = exhibition.name;
+            exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].image = exhibition.image;
+            exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].time = exhibition.time;
+            exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].place = exhibition.place;
+            exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].txt = exhibition.txt;
         }   
         
         $scope.addNewExhb = function(name, image, time, place, txt) {
             //console.log(name);
-          /*  if(name == undefined || famName == undefined || image == undefined || imbdLink == undefined || bday == undefined) {
-                $scope.errMsg = true;
-                //console.log(errMsg);
-                return;
-            }
-            $scope.errMsg = false; */
+          //  if(name == undefined || name == "" || image == undefined || image == "" || time == undefined || time == "" ||  place == undefined || place == "" || txt == undefined || txt == "") {
+          //      $scope.errMsgE = true;
+                //console.log(errMsgE);
+          //      return;
+          //  }
+            $scope.errMsgE = false; 
             var newExhbt = new exhibitService.Exhibition(name, image, time, place, txt);
             $scope.exhibitions.unshift(newExhbt);
             $scope.name = "";
-            $scope.image = "";
+           $scope.image = "";
+           //  $scope.editItem._attachments_uri_E.image = undefined;
+           //  $('#customFile').val("");
             $scope.time = "";
             $scope.place = "";
             $scope.txt = "";

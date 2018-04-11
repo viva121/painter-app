@@ -246,8 +246,9 @@ div.galleries-btn-gr {
 
 /* /Exhibitions */
 .img-exhibit img {
-    height: 250px;
+   max-height: 250px;
     width: auto;
+    max-width:100%;
 }
 .row-exhibit {
     margin-bottom: 2em;

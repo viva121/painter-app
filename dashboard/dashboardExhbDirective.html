@@ -19,14 +19,20 @@
                     <div ></div>
                     <form>
                         <div class="form-group row">
-                            <input type="text" class="form-control input-img" id="" ng-model="exhibition.name" placeholder="Enter Name">
+                          <input type="text" class="form-control input-img" id="" ng-model="exhibition.name" placeholder="Enter Name">
+                          <!--   <div class="custom-file  input-img">
+                              <input type="file" class="custom-file-input my-file-input" ng-model="exhibition.image" ng-change="showImgName()"  accept="image/*" app-filereader id="customFile" name="myImage"  required>
+                             <label class="custom-file-label" for="customFile">{{imgTxt}}</label>
+                          </div> -->
                           <input type="text" class="form-control input-img" id="" ng-model="exhibition.image" placeholder="Enter Image">
                           <input type="text" class="form-control input-img" id="" ng-model="exhibition.time" placeholder="Enter Time">
                           <input type="text" class="form-control input-img" id="" ng-model="exhibition.place" placeholder="Enter Place">
                          <!-- <input type="textarea" class="form-control input-img"  rows="3" id="" ng-model="exhibition.txt" placeholder="Enter Text"> -->
                           <textarea class="form-control input-img" id="" rows="3"ng-model="exhibition.txt" placeholder="Enter Text"></textarea>
                         </div>
-                        
+                        <div class="alert alert-secondary alert-pnt" role="alert" ng-show="errMsgE">
+                          Please fill in all fields!
+                        </div>
                         <button type="submit" ng-click="saveEditExhb(exhibition)" class="btn btn-secondary btn-block">Save Changes</button>
                 </form>
                 <div class="mt-2"><a href=''  ng-click="deleteExhbt(exhibition)">Delete forever</a></div>
