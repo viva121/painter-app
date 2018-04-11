@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 require_once 'phpmailer/PHPMailerAutoload.php';
 
 if (isset($_POST['inputName']) && isset($_POST['inputEmail']) && isset($_POST['inputSubject']) && isset($_POST['inputMessage'])) {
@@ -15,20 +17,11 @@ if (isset($_POST['inputName']) && isset($_POST['inputEmail']) && isset($_POST['i
 
     $mail->From = $_POST['inputEmail'];
     $mail->FromName = $_POST['inputName'];
-    $mail->AddAddress('vadim.kursdaweb@gmail.com'); //recipient
+    $mail->AddAddress('vadim.kursdaweb@gmail.com'); //recipient 
     $mail->Subject = $_POST['inputSubject'];
     $mail->Body = "Name: " . $_POST['inputName'] . "\r\n\r\nMessage: " . stripslashes($_POST['inputMessage']);
 
-    $mail->isSMTP();
-    $mail->Host = gethostbyname('smtp.gmail.com');
-    $mail->Port = 587;
-    $mail->SMTPSecure = "tls";
-    $mail->SMTPAuth = true;
-    $mail->Username = "vadim.kursdaweb@gmail.com";
-    $mail->Password = "asdfGh321";
-    $mail->setFrom('vadim.kursdaweb@gmail.com', 'Painter App');
-
-
+ 
     if (isset($_POST['ref'])) {
         $mail->Body .= "\r\n\r\nRef: " . $_POST['ref'];
     }
