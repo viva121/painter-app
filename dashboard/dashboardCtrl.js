@@ -42,6 +42,7 @@ $('.my-file-input').on('change',function(){
         $scope.technique = undefined;
         $scope.year = undefined;
         $scope.gallery = undefined;
+        $scope.imgTxtP = "Choose image file...";
        }
 
 // Edit Existing Image

@@ -1,0 +1,9 @@
+[
+    {
+        "email": "svetlana@svetalukashart.com",
+        "password": "asdf",
+        "fname": "Svetlana",
+        "lname": "Lukash",
+        "data": "data/svetlana-lukash.json"
+    }
+]

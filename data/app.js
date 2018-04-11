@@ -20,6 +20,9 @@ app.config(function($routeProvider) {
     }).when ("/contacts", {
       templateUrl: "contacts/contacts.html",
       controller: "contactsCtrl"
+    }).when ("/login", {
+      templateUrl: "login/login.html",
+      controller: "loginCtrl"
     }).otherwise({
         redirectTo: "/"
     });
