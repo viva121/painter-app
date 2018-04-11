@@ -1,4 +1,17 @@
-app.controller('dashboardCtrl', function($scope, $routeParams, paintingService, exhibitService) {
+app.controller('dashboardCtrl', function($scope, $routeParams, $location, paintingService, exhibitService, activeUserService) {
+
+// This is an authotization check. If the user is not logged going back to the home screen
+    if (!activeUserService.isLoggedIn()) {
+        $location.path("/");
+        return;
+    }
+
+    $scope.logout = function() {
+        activeUserService.logout();
+        $location.path('/');
+    }
+
+
     $scope.paintings = [];
     paintingService.loadPaintings().then(function() {
     $scope.paintings = paintingService.paintings;

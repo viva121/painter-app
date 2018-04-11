@@ -1,10 +1,10 @@
 app.factory("activeUserService", function ($http, $log, $q) {
-    function User(plainUser) {
-        this.email = plainUser.email;
-        this.password = plainUser.password;
-        this.fname = plainUser.fname;
-        this.lname = plainUser.lname;
-        this.data = plainUser.data;
+    function User(pUser) {
+        this.email = pUser.email;
+        this.password = pUser.password;
+        this.fname = pUser.fname;
+        this.lname = pUser.lname;
+        this.data = pUser.data;
     }
 
     var activeUser = null;
@@ -12,7 +12,7 @@ app.factory("activeUserService", function ($http, $log, $q) {
     function load() {
         var async = $q.defer();
 
-        $http.get('app/data/users.json').then(
+        $http.get('data/users.json').then(
             function (response) {
                 for (var i = 0; i < response.data.length; i++) {
                     users.push(new User(response.data[i]));
@@ -36,7 +36,7 @@ app.factory("activeUserService", function ($http, $log, $q) {
     function login(email, pwd) {
         var async = $q.defer();
 
-        $http.get('app/data/users.json').then(
+        $http.get('data/users.json').then(
             function (response) {
                 for (var i = 0; i < response.data.length; i++) {
                     if (response.data[i].email === email && response.data[i].password === pwd) {

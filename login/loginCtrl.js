@@ -7,7 +7,7 @@ app.controller('loginCtrl', function($scope, activeUserService, $log, $location)
 
         activeUserService.login($scope.email, $scope.pwd).then(function(successLogin) {
             if (successLogin) {
-                $location.path("/cars");
+                $location.path("/dashboard");
             } else {
                 // TODO: Missing hadleing of next try
                 $scope.invalidCredentails = true;
