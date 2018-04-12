@@ -1,5 +1,31 @@
-app.controller('contactsCtrl', function ($scope, $http) {
-    $scope.result = 'hidden';
+//app.controller('contactsCtrl', function ($scope, $http) {
+
+    
+    
+    app.controller("contactsCtrl", ['$scope', '$http', function ($scope, $http) {
+            $scope.url = 'http://127.0.0.1:3000';
+            $scope.formsubmit = function (isValid) {
+    
+                if (isValid) {
+    
+                    $http.post($scope.url, {"name": $scope.name, "email": $scope.email, "message": $scope.message}).
+                            then(function (data, status) {
+                                $scope.status = status;
+                                $scope.data = data;
+                                $scope.result = data; // Show result from server in our <pre></pre> element
+                            })
+                } else {
+                    alert('Form is not valid');
+                }
+    
+            }
+    
+        }]);
+
+
+
+
+/*    $scope.result = 'hidden';
     $scope.resultMessage;
     $scope.formData; //formData is an object holding the name, email, subject, and message
     $scope.submitButtonDisabled = false;
@@ -48,10 +74,12 @@ app.controller('contactsCtrl', function ($scope, $http) {
                     $scope.result='bg-danger';
                 }
             }); */
-        } else {
+ /*       } else {
             $scope.submitButtonDisabled = false;
             $scope.resultMessage = 'Failed <img src="http://www.chaosm.net/blog/wp-includes/images/smilies/icon_sad.gif" alt=":(" class="wp-smiley">  Please fill out all the fields.';
             $scope.result='bg-danger';
         }
     }
-});
+*/
+
+//});
