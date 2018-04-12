@@ -3,7 +3,7 @@ app.factory('paintingService', function($http, $q) {
     var paintings = [];
     var wasEverLoaded = false;
 
-    function Painting(name, image, title, size, technique, year, gallery, comments) {
+    function Painting(name, image, title, size, technique, year, gallery, available, comments) {
         this.name = name;
         this.image = image;
         this.title = title;
@@ -11,6 +11,7 @@ app.factory('paintingService', function($http, $q) {
         this.technique = technique;
         this.year = year;
         this.gallery = gallery;
+        this.available = available;
         this.comments = comments;
      }
 
@@ -29,7 +30,7 @@ app.factory('paintingService', function($http, $q) {
             paintings.splice(0,paintings.length)
             //$log.debug("PAINTING-APP: " + JSON.stringify(response));
             for(i = 0; i < response.data.length; i++) {
-                paintings.push(new Painting(response.data[i].name, response.data[i].image, response.data[i].title, response.data[i].size, response.data[i].technique, response.data[i].year, response.data[i].gallery,  response.data[i].comments));
+                paintings.push(new Painting(response.data[i].name, response.data[i].image, response.data[i].title, response.data[i].size, response.data[i].technique, response.data[i].year, response.data[i].gallery, response.data[i].available,  response.data[i].comments));
               }
             wasEverLoaded = true;
             async.resolve();

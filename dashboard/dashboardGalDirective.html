@@ -20,15 +20,7 @@
                                           <a class="dropdown-item" href="" ng-click="filterGal = undefined">Show All</a>
                                         </div>
                                       </div>
-                                  <!--  <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Landscape'}">Landscape</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Seascape'}">Seascape</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Nude'}">Nude</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Graphics'}">Graphics</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Portrait'}">Portrait</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</button>
-                                    <button type="button" class="btn btn-secondary" ng-click="filterGal = undefined">Show All</button> -->
+                                  
                             </div>
                            
     </div>        
@@ -69,7 +61,7 @@
                       <input type="text" class="form-control input-img" id="" ng-model="size" placeholder="Enter Size">
                       <input type="text" class="form-control input-img" id="" ng-model="technique" placeholder="Enter Technique">
                       <input type="number" class="form-control input-img" id="" ng-model="year" placeholder="Enter Year"  required>
-                      <select class="form-control" ng-model="gallery" id=""  required>
+                      <select class="form-control input-img" ng-model="gallery" id=""  required>
                         <option value="" disabled selected>Sellect Gallery</option>
                         <option>Flowers</option>
                         <option>Still Life</option>
@@ -80,7 +72,12 @@
                         <option>Portrait</option>
                         <option>Voyage</option>
           </select>
-                     <!-- <input type="text" class="form-control input-img" id="" ng-model="gallery" placeholder="Enter Gallery"> -->
+          <div class="form-check">
+                <input class="form-check-input" ng-model="available" type="checkbox" value="" id="available">
+                <label class="form-check-label" for="available">
+                  Available
+                </label>
+              </div>
                     </div>
                     
                     <button type="submit" ng-click="saveEditImg()" class="btn btn-secondary btn-block">Save Changes</button>
@@ -125,12 +122,17 @@
                                             <option>Portrait</option>
                                             <option>Voyage</option>
                               </select>
-                             <!-- <input type="text" class="form-control input-img"   id=""  placeholder="Enter Gallery"> -->
+                              <div class="form-check">
+                                <input class="form-check-input" ng-model="available" type="checkbox" value="" id="available">
+                                <label class="form-check-label" for="available">
+                                  Available
+                                </label>
+                              </div>
                             </div>
                             <div class="alert alert-secondary alert-pnt" role="alert" ng-show="errMsg">
                                 Please fill in all fields!
                               </div>
-                            <button type="submit" class="btn btn-secondary btn-block" ng-click="addImg(name, editItem._attachments_uri.image, title, size, technique, year, gallery)">Save Changes</button>
+                            <button type="submit" class="btn btn-secondary btn-block" ng-click="addImg(name, editItem._attachments_uri.image, title, size, technique, year, gallery, available)">Save Changes</button>
                     </form>
                     
             </div>

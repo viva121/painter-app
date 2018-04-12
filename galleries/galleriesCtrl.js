@@ -12,6 +12,7 @@ app.controller('galleriesCtrl', function($scope, $location, paintingService) {
         $scope.size =  painting.size;
         $scope.technique =  painting.technique;
         $scope.year =  painting.year;
+        $scope.available =  painting.available;
           //  $scope.hideModal = false;
       }
       $scope.hideImgL = function() {

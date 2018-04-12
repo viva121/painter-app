@@ -35,9 +35,12 @@ $('.my-file-input').on('change',function(){
 
     $scope.integerval = /^\d*$/;
 */
-    $scope.addImg = function(name, image, title, size, technique, year, gallery) {
+    $scope.addImg = function(name, image, title, size, technique, year, gallery, available) {
+        if(available == undefined){
+            available == false;
+        }
         //console.log(name);
-      if(image == "" || image == undefined || title == undefined ||  title == "" || size == undefined || size == "" || technique == undefined || technique == "" || year == undefined ||  year == "" || gallery == undefined || gallery == "") {
+      if(image == "" || image == undefined || title == undefined ||  title == "" || size == undefined || size == "" || technique == undefined || technique == "" || year == undefined ||  year == "" || gallery == undefined || gallery == "" ) {
            
         $scope.errMsg = true;
             //console.log(errMsg);
@@ -45,7 +48,7 @@ $('.my-file-input').on('change',function(){
         }
         $scope.errMsg = false; 
         name = "Svetlana Lukash";
-        var newImg = new paintingService.Painting(name, image, title, size, technique, year, gallery);
+        var newImg = new paintingService.Painting(name, image, title, size, technique, year, gallery, available );
         newImg.name = "Svetlana Lukash";
         $scope.paintings.push(newImg);
         $scope.title = undefined;
@@ -55,6 +58,7 @@ $('.my-file-input').on('change',function(){
         $scope.technique = undefined;
         $scope.year = undefined;
         $scope.gallery = undefined;
+        $scope.available = undefined;
         $scope.imgTxtP = "Choose image file...";
        }
 
@@ -65,6 +69,7 @@ $('.my-file-input').on('change',function(){
             paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].technique = $scope.technique;
             paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].year = $scope.year;
             paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].gallery = $scope.gallery;
+            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].available = $scope.available;
 
             $scope.hideModalEdit = true;
       }
@@ -86,6 +91,7 @@ $('.my-file-input').on('change',function(){
             $scope.technique = undefined;
             $scope.year = undefined;
             $scope.gallery = undefined;
+            $scope.available = undefined;
       }
       $scope.hideAddImg = function() {
            $scope.hideModal = true;
@@ -103,6 +109,7 @@ $('.my-file-input').on('change',function(){
             $scope.technique = painting.technique;
             $scope.year = painting.year;
             $scope.gallery = painting.gallery;
+            $scope.available = painting.available;
       }
       $scope.hideEditImg = function() {
            $scope.hideModalEdit = true;

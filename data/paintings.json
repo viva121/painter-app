@@ -6,6 +6,7 @@
       "technique":"Watercolor",
       "year": 2017,
       "gallery":"Landscape",
+      "available":true,
       "comments":""
 }, 
 
@@ -16,6 +17,7 @@
     "technique":"Watercolor",
     "year": 2010,
     "gallery":"Flowers",
+    "available":true,
     "comments":""
 },  
 { "name":"Svetlana Lukash", 
@@ -25,6 +27,7 @@
     "technique":"Watercolor",
     "year": 2010,
     "gallery":"Flowers",
+    "available":false,
     "comments":""
 },
 { "name":"Svetlana Lukash", 
@@ -34,6 +37,7 @@
     "technique":"Watercolor",
     "year":2006,
     "gallery":"Still Life",
+    "available":true,
     "comments":""
 },
 { "name":"Svetlana Lukash", 
@@ -43,6 +47,7 @@
     "technique":"Watercolor",
     "year":2017,
     "gallery":"Portrait",
+    "available":false,
     "comments":""
 }                     
 
