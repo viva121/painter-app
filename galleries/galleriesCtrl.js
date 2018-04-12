@@ -13,16 +13,16 @@ app.controller('galleriesCtrl', function($scope, $location, paintingService) {
         $scope.technique =  painting.technique;
         $scope.year =  painting.year;
         $scope.available =  painting.available;
-          //  $scope.hideModal = false;
+        if(painting.available ==true) {
+            $scope.availability = "Yes";
+        } else {
+            $scope.availability = "No";
+        }
+        
       }
       $scope.hideImgL = function() {
            $scope.hideModal = true;
       }
-//console.log($location.url());
-   $scope.urlGalleries = function() {
-    if($location.url() === '/galleries') {
-       var cls = "active";
-    } else {var cls = "";}
-    return cls;
-   } 
+
+
 });
