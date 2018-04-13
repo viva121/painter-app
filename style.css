@@ -48,6 +48,16 @@ div.galleries-btn-gr {
     background-color: #c51a04;
     border-color: #c51a04;
 }
+.btn-primary:disabled {
+    color: #fff;
+    background-color: #f5553f;
+    border-color: #f5553f;
+}
+.btn-primary:active {
+    color: #fff !important;
+    background-color: #f5553f !important;
+    border-color: #f5553f !important;
+}
 .btn-secondary {
     color: #fff;
     background-color: #343a40;
