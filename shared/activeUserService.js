@@ -20,7 +20,7 @@ app.factory("activeUserService", function ($http, $log, $q) {
 
                 async.resolve();
                 // Testing
-                //alert(users[1].lname); 
+                //alert(users[0].lname); 
             }, function (response) {
                 $log.error("error in getting user json: " + JSON.stringify(response));
                 async.reject();

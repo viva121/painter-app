@@ -1,5 +1,13 @@
-app.controller('exhibitionsCtrl', function($scope, $location, exhibitService) {
+app.controller('exhibitionsCtrl', function($scope, $location, exhibitService, activeUserService) {
    
+    $scope.isLoggedIn = function() {
+        return activeUserService.isLoggedIn(); 
+    }
+   
+    $scope.logout = function() {
+       activeUserService.logout()
+    }
+    
     $scope.exhibitions = [];
     exhibitService.loadExibit().then(function() {
         $scope.exhibitions = exhibitService.exhibitions;

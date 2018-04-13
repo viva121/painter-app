@@ -1,4 +1,13 @@
-app.controller('galleriesCtrl', function($scope, $location, paintingService) {
+app.controller('galleriesCtrl', function($scope, $location, paintingService, activeUserService) {
+   
+    $scope.isLoggedIn = function() {
+        return activeUserService.isLoggedIn(); 
+   }
+   
+   $scope.logout = function() {
+       activeUserService.logout()
+   }
+   
     $scope.paintings = [];
     paintingService.loadPaintings().then(function() {
         $scope.paintings = paintingService.paintings;

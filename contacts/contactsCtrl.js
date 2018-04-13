@@ -2,7 +2,16 @@
 
     
     
-    app.controller("contactsCtrl", ['$scope', '$http', function ($scope, $http) {
+    app.controller("contactsCtrl", ['$scope', '$http', 'activeUserService', function ($scope, $http, activeUserService) {
+
+        $scope.isLoggedIn = function() {
+            return activeUserService.isLoggedIn(); 
+       }
+       
+       $scope.logout = function() {
+           activeUserService.logout()
+       }
+
             $scope.url = 'http://127.0.0.1:3000';
             $scope.formsubmit = function (isValid) {
     
