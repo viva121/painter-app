@@ -56,10 +56,10 @@ nodemailer.createTestAccount((err, account) => {
     // Message object
     let message = {
         // Comma separated list of recipients
-        to: 'Andris Reinman <ka.vadim@gmail.com>',
+        to: 'Vadim <ka.vadim@gmail.com>',
 
         // Subject of the message
-        subject: "Message From Website - From " + req.body.name + "<" + req.body.email + ">",
+        subject: "Message From Painter app - From " + req.body.name + "<" + req.body.email + ">",
 
         // plaintext body
         text: req.body.message,
