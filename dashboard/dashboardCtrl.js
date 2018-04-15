@@ -1,4 +1,4 @@
-app.controller('dashboardCtrl', function($scope, $routeParams, $location, paintingService, exhibitService, activeUserService) {
+app.controller('dashboardCtrl', function($scope, $routeParams, $location, $timeout, paintingService, exhibitService, activeUserService) {
 
 // This is an authotization check. If the user is not logged going back to the home screen
     if (!activeUserService.isLoggedIn()) {
@@ -47,6 +47,7 @@ $('.my-file-input').on('change',function(){
         return;
         }
         $scope.errMsg = false; 
+        showHideSuccMsg();
         name = "Svetlana Lukash";
         var newImg = new paintingService.Painting(name, image, title, size, technique, year, gallery, available );
         newImg.name = "Svetlana Lukash";
@@ -165,7 +166,15 @@ $('.my-file-input').on('change',function(){
             $scope.txt =  exhibition.txt;
           }
 
+        showHideSuccMsg = function() {
+            $scope.showSuccess = true;
+            $timeout(function() {
+            $scope.showSuccess = false;
+            }, 3000);
+         };
+
         $scope.errMsgE = false; 
+        $scope.showSuccess = false;
         $scope.saveEditExhb = function(exhibition) {
             
             if(exhibition.name == undefined || exhibition.name == "" || exhibition.image == undefined || exhibition.image == "" || exhibition.time == undefined || exhibition.time == "" ||  exhibition.place == undefined || exhibition.place == "" || exhibition.txt == undefined || exhibition.txt == "") {
@@ -174,6 +183,7 @@ $('.my-file-input').on('change',function(){
                      return;
             }
             $scope.errMsgE = false; 
+            showHideSuccMsg();
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].name = exhibition.name;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].image = exhibition.image;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].time = exhibition.time;
@@ -181,6 +191,8 @@ $('.my-file-input').on('change',function(){
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].txt = exhibition.txt;
         }   
         
+        
+
         $scope.addNewExhb = function(name, image, time, place, txt) {
             //console.log(name);
           //  if(name == undefined || name == "" || image == undefined || image == "" || time == undefined || time == "" ||  place == undefined || place == "" || txt == undefined || txt == "") {
@@ -190,14 +202,16 @@ $('.my-file-input').on('change',function(){
           //  }
             $scope.errMsgE = false; 
             var newExhbt = new exhibitService.Exhibition(name, image, time, place, txt);
+            var exhbCounter = $scope.exhibitions.length;
             $scope.exhibitions.unshift(newExhbt);
-            $scope.name = "";
-           $scope.image = "";
-           //  $scope.editItem._attachments_uri_E.image = undefined;
-           //  $('#customFile').val("");
-            $scope.time = "";
-            $scope.place = "";
-            $scope.txt = "";
+                $scope.name = "";
+                $scope.image = "";
+            //  $scope.editItem._attachments_uri_E.image = undefined;
+            //  $('#customFile').val("");
+                $scope.time = "";
+                $scope.place = "";
+                $scope.txt = "";
+        
         }
 
         $scope.deleteExhbt = function(exhibition) {

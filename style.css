@@ -94,7 +94,33 @@ div.galleries-btn-gr {
     padding-top:  1em;
 }
 .card-material {
-    float:right; line-height:2em;
+    float:right; 
+    line-height:2em;
+}
+
+/* Success popup ///////////////////////////////////////////////// */
+.success-wraper {
+    position: relative;
+}
+.success-popup {
+    position: absolute;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ccc2ad;
+    
+    border-radius: 4px;
+    padding: 1em;
+    box-shadow: 3px 5px 8px #ccc2ad;
+    width:150px;
+    height:60px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 26;
+}
+.success-popup h5 {
+    color: #e83a23;
 }
 /* Alerts ///////////////////////////////////////////////// */
 .alert-secondary.alert-pnt {
@@ -107,11 +133,11 @@ div.galleries-btn-gr {
     padding: 10px;
     background-color: #333; 
     max-height: calc(100% - 100px);
-  position: fixed;
+    position: fixed;
     top: 50%;
     left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 26;
+    transform: translate(-50%, -50%);
+    z-index: 26;
 }
 .fa-window-close {
     color: #e83a23;
