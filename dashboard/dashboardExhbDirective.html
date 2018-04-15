@@ -4,8 +4,8 @@
         <button type="submit" ng-click="addNewExhb()" class="btn btn-secondary btn-block">Add Exhibition</button>
       </div>
     </div>  
-    <div id="accordion row">
-            <div class="card" ng-repeat="exhibition in exhibitions">
+    <div id="accordion" class= "">
+            <div class="card row" ng-repeat="exhibition in exhibitions">
               <div class="card-header" id="heading{{exhibitions.indexOf(exhibition)}}">
                 <h5 class="mb-0">
                   <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{exhibitions.indexOf(exhibition)}}"  aria-expanded="{{ exhibitions.indexOf(exhibition) == 0 ? 'true' : 'false'}}"   aria-controls="collapse{{exhibitions.indexOf(exhibition)}}">
