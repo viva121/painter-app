@@ -1,4 +1,4 @@
-var app = angular.module('painterApp',  ['ngRoute']);
+var app = angular.module('painterApp',  ['ngRoute', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -20,10 +20,17 @@ app.config(function($routeProvider) {
     }).when ("/contacts", {
       templateUrl: "contacts/contacts.html",
       controller: "contactsCtrl"
+    }).when ("/contacts/:pName", {
+      templateUrl: "contacts/contacts.html",
+      controller: "contactsCtrl"
     }).when ("/login", {
       templateUrl: "login/login.html",
       controller: "loginCtrl"
-    }).otherwise({
+    }).when ("/paintingModal", {
+      templateUrl: "galleries/paintingModal.html",
+      controller: "galleriesCtrl"
+    })
+    .otherwise({
         redirectTo: "/"
     });
     

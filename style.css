@@ -127,7 +127,52 @@ div.galleries-btn-gr {
     background-color: #ff9082;
     color:#580b00;
 }
-/* Modals ///////////////////////////////////////////////// */
+/* Modals ///////////////////////////////////////////////// 
+.fade {
+    opacity: 0; 
+   transition: opacity .15s linear; 
+    animation: fadeIn .2s ease-in-out .2s forwards;
+}
+*/	
+.fade {
+	opacity: 0;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1; 
+    animation-timing-function: ease-in; 
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.modal-backdrop.fade {
+	opacity: 0;
+	animation-name: fadeInOpacityBD;
+	animation-iteration-count: 1; 
+    animation-timing-function: ease-in; 
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInOpacityBD {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: .5;
+	}
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.modal-content {
+    margin-top: 300px !important;
+}
+
 .card-popup {
     position: absolute;
     padding: 10px;

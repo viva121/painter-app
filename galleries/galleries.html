@@ -21,7 +21,7 @@
     <div class="row gallery ">
         <div class="card-columns">
                 <div class="card entry-box" ng-repeat="painting in paintings | filter: filterGal"  >
-                        <div ng-click="showImgL(painting)" data-toggle="modal" data-target="#exampleModal"><img class="card-img-top" ng-src="{{painting.image}}" alt="{{painting.title}}">
+                        <div ng-click="open(painting)" > <!-- data-toggle="modal" data-target="#exampleModal"> --><img class="card-img-top" ng-src="{{painting.image}}" alt="{{painting.title}}">
                             <div class="overlay-title-category-hover">
               
                                 <div class="hvr-txt-align">
@@ -138,3 +138,49 @@
 
 
 <footer-p></footer-p>              
+
+
+
+
+<script  type="text/ng-template" id="paintingModal.html">
+
+  <<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <img src="{{image}}" alt="{{title}}">
+  
+    <div class="row img-details">
+    <div class="col-sm-6">
+        Size: {{size}}
+    </div>
+    <div class="col-sm-6">
+        Technique: {{technique}}
+    </div>
+  </div>
+  <div class="row  img-details">
+    <div class="col-sm-6">
+        Year: {{year}}
+    </div>
+    <div class="col-sm-6">
+        Available: <span class="badge badge-pill badge-secondary">{{availability}}</span>
+    </div>
+  </div>
+  <div class="row  img-details">
+     <div class="col-sm-6">
+          <button type="button" ng-click="paintingRequest(title)" class="btn btn-primary">Contact the Author</button>
+     </div>
+     <div class="col-sm-6">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     </div>
+    </div>>
+   
+    
+    
+  </div>
+
+
+</script>
