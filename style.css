@@ -94,24 +94,95 @@ div.galleries-btn-gr {
     padding-top:  1em;
 }
 .card-material {
-    float:right; line-height:2em;
+    float:right; 
+    line-height:2em;
+}
+
+/* Success popup ///////////////////////////////////////////////// */
+.success-wraper {
+    position: relative;
+}
+.success-popup {
+    position: absolute;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ccc2ad;
+    
+    border-radius: 4px;
+    padding: 1em;
+    box-shadow: 3px 5px 8px #ccc2ad;
+    width:150px;
+    height:60px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 26;
+}
+.success-popup h5 {
+    color: #e83a23;
 }
 /* Alerts ///////////////////////////////////////////////// */
 .alert-secondary.alert-pnt {
     background-color: #ff9082;
     color:#580b00;
 }
-/* Modals ///////////////////////////////////////////////// */
+/* Modals ///////////////////////////////////////////////// 
+.fade {
+    opacity: 0; 
+   transition: opacity .15s linear; 
+    animation: fadeIn .2s ease-in-out .2s forwards;
+}
+*/	
+.fade {
+	opacity: 0;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1; 
+    animation-timing-function: ease-in; 
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.modal-backdrop.fade {
+	opacity: 0;
+	animation-name: fadeInOpacityBD;
+	animation-iteration-count: 1; 
+    animation-timing-function: ease-in; 
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInOpacityBD {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: .5;
+	}
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.modal-content {
+    margin-top: 300px !important;
+}
+
 .card-popup {
     position: absolute;
     padding: 10px;
     background-color: #333; 
     max-height: calc(100% - 100px);
-  position: fixed;
+    position: fixed;
     top: 50%;
     left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 26;
+    transform: translate(-50%, -50%);
+    z-index: 26;
 }
 .fa-window-close {
     color: #e83a23;

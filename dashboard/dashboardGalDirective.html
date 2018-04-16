@@ -100,7 +100,7 @@
          <div class="col-sm-1"><span class="float-right" ng-click="hideAddImg()"><i class="fas fa-window-close"></i></span></div>
         </div>           
         <div class = "row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 success-wraper">
                     <form>
                             <div class="form-group">
                               <input type="text" class="form-control input-img" ng-model="title" id=""  placeholder="Enter Title" required>
@@ -129,6 +129,7 @@
                                 </label>
                               </div>
                             </div>
+                            <div class="success-popup" ng-show="showSuccess"><h5>Success!</h5></div>
                             <div class="alert alert-secondary alert-pnt" role="alert" ng-show="errMsg">
                                 Please fill in all fields!
                               </div>
