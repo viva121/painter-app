@@ -1,4 +1,4 @@
-app.controller('galleriesCtrl', function($scope, $location, $uibModal, paintingService, activeUserService) {
+app.controller('galleriesCtrl', function($scope, $location, $uibModal, paintingDbService, activeUserService) {
    
     $scope.isLoggedIn = function() {
         return activeUserService.isLoggedIn(); 
@@ -9,8 +9,8 @@ app.controller('galleriesCtrl', function($scope, $location, $uibModal, paintingS
    }
    
     $scope.paintings = [];
-    paintingService.loadPaintings().then(function() {
-        $scope.paintings = paintingService.paintings;
+    paintingDbService.loadPaintings().then(function() {
+        $scope.paintings = paintingDbService.paintings;
     }) 
 
     $scope.hideModal = true;
@@ -54,7 +54,7 @@ app.controller('galleriesCtrl', function($scope, $location, $uibModal, paintingS
               $uibModalInstance.dismiss('cancel');
             };
             $scope.title =  painting.title;
-          $scope.image1 =  painting.image;
+          $scope.image =  painting.image;
           $scope.size =  painting.size;
           $scope.technique =  painting.technique;
           $scope.year =  painting.year;

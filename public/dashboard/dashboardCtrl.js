@@ -1,4 +1,4 @@
-app.controller('dashboardCtrl', function($scope, $routeParams, $location, $timeout, paintingService, exhibitService, activeUserService) {
+app.controller('dashboardCtrl', function($scope, $http, $routeParams, $location, $timeout, paintingDbService, exhibitService, activeUserService) {
 
 // This is an authotization check. If the user is not logged going back to the home screen
     if (!activeUserService.isLoggedIn()) {
@@ -13,8 +13,8 @@ app.controller('dashboardCtrl', function($scope, $routeParams, $location, $timeo
 
 
     $scope.paintings = [];
-    paintingService.loadPaintings().then(function() {
-    $scope.paintings = paintingService.paintings;
+    paintingDbService.loadPaintings().then(function() {
+    $scope.paintings = paintingDbService.paintings;
     }) 
     
     
@@ -49,35 +49,49 @@ $('.my-file-input').on('change',function(){
         $scope.errMsg = false; 
         showHideSuccMsg();
         name = "Svetlana Lukash";
-        var newImg = new paintingService.Painting(name, image, title, size, technique, year, gallery, available );
-        newImg.name = "Svetlana Lukash";
-        $scope.paintings.push(newImg);
+        var newImg = new paintingDbService.Painting(name, image, title, size, technique, year, gallery, available );
+        
+        $http.post("/paintings", newImg).then( function() {
+            newImg.name = "Svetlana Lukash";
+            $scope.paintings.push(newImg);
+            
+        });
         $scope.title = undefined;
-        $scope.editItem._attachments_uri.image = undefined;
-        $('#customFile').val("");
-        $scope.size = undefined;
-        $scope.technique = undefined;
-        $scope.year = undefined;
-        $scope.gallery = undefined;
-        $scope.available = undefined;
-        $scope.imgTxtP = "Choose image file...";
+            $scope.editItem._attachments_uri.image = undefined;
+            $('#customFile').val("");
+            $scope.size = undefined;
+            $scope.technique = undefined;
+            $scope.year = undefined;
+            $scope.gallery = undefined;
+            $scope.available = undefined;
+            $scope.imgTxtP = "Choose image file...";
        }
 
 // Edit Existing Image
        $scope.saveEditImg = function() {
-            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].title = $scope.title;
-            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].size = $scope.size;
-            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].technique = $scope.technique;
-            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].year = $scope.year;
-            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].gallery = $scope.gallery;
-            paintingService.paintings[paintingService.paintings.indexOf($scope.selectedItem)].available = $scope.available;
+        var itemId = $scope.selectedItem.id;
+        $http.put("/paintings/" + itemId, $scope.selectedItem).then( function() {
+            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].title = $scope.title;
+            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].size = $scope.size;
+            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].technique = $scope.technique;
+            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].year = $scope.year;
+            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].gallery = $scope.gallery;
+            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].available = $scope.available;
 
             $scope.hideModalEdit = true;
+            
+        });     
       }
 
       $scope.deleteItem = function() {
+var itemId = $scope.selectedItem.id;
+        $http.delete("/paintings/" + itemId).then( function() {
             $scope.paintings.splice($scope.paintings.indexOf($scope.selectedItem), 1);
             $scope.hideModalEdit = true;
+            
+        });
+
+            
       }
 
       $scope.hideModal = true;
