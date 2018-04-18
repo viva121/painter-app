@@ -13,9 +13,12 @@
        }
 
        $scope.emlJS = function() {
-        emailjs.send("gmail","painter_app_email_template",{name: "James", notes: "Check this out!"})
+        emailjs.send("gmail","painter_app_email_template", {"from_name":$scope.name,"from_email":$scope.email,"message_html":$scope.message}) //)
         .then(function(response) {
            console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+           $scope.name = "";
+           $scope.email = "";
+           $scope.message = "";
         }, function(err) {
            console.log("FAILED. error=", err);
         });
