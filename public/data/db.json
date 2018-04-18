@@ -1,36 +1,60 @@
 {
   "paintings": [
     {
-      "id": 0,
       "name": "Svetlana Lukash",
       "image": "assets/paintings/city.jpg",
       "title": "Tel Aviv",
       "size": "70x50cm",
       "technique": "Watercolor",
-      "year": 2017,
+      "year": 2015,
       "gallery": "Landscape",
       "available": true,
-      "comments": ""
+      "comments": "",
+      "id": 0
     }
   ],
   "exhibitions": [
     {
-      "id": 0,
       "name": "Art in the Center",
       "image": "assets/exhibitions/petach_tikva.jpg",
       "time": "May 2016",
       "place": "The Exhibition took place at Cultural Center, Petach Tikva.",
-      "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "id": 0
+    },
+    {
+      "name": "Art in the Center",
+      "image": "assets/exhibitions/petach_tikva.jpg",
+      "time": "May 2016",
+      "place": "The Exhibition took place at Cultural Center, Petach Tikva.",
+      "txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "id": 1
+    },
+    {
+      "name": "Art in the Center",
+      "image": "assets/exhibitions/petach_tikva.jpg",
+      "time": "May 2016",
+      "place": "The Exhibition took place at Cultural Center, Petach Tikva.",
+      "txt": "Ldsafdfadaorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "id": 2
+    },
+    {
+      "name": "sd",
+      "image": "sdfad",
+      "time": "dsafaf",
+      "place": "dsfaf",
+      "txt": "dsafasfd",
+      "id": 3
     }
   ],
   "users": [
     {
-      "id": 0,
       "email": "svetlana@svetalukashart.com",
       "password": "asdf",
       "fname": "Svetlana",
       "lname": "Lukash",
-      "data": "data/svetlana-lukash.json"
+      "data": "data/svetlana-lukash.json",
+      "id": 0
     }
   ]
 }

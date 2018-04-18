@@ -70,13 +70,14 @@ $('.my-file-input').on('change',function(){
 // Edit Existing Image
        $scope.saveEditImg = function() {
         var itemId = $scope.selectedItem.id;
-        $http.put("/paintings/" + itemId, $scope.selectedItem).then( function() {
-            paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].title = $scope.title;
+        paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].title = $scope.title;
             paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].size = $scope.size;
             paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].technique = $scope.technique;
             paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].year = $scope.year;
             paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].gallery = $scope.gallery;
             paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].available = $scope.available;
+        $http.put("/paintings/" + itemId, $scope.selectedItem).then( function() {
+            
 
             $scope.hideModalEdit = true;
             
@@ -144,7 +145,7 @@ var itemId = $scope.selectedItem.id;
     $scope.propertyName = propertyName;
   };
   
-    //  Exhibitions /////////////////////////////////////////////////////////////////////////
+    //  Exhibitions ///////////////////////////////////////////////////////////////////////////////////////////////////
       $scope.exhibitions = [];
       exhibitService.loadExibit().then(function() {
           $scope.exhibitions = exhibitService.exhibitions;
@@ -197,12 +198,18 @@ var itemId = $scope.selectedItem.id;
                      return;
             }
             $scope.errMsgE = false; 
-            showHideSuccMsg();
+            
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].name = exhibition.name;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].image = exhibition.image;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].time = exhibition.time;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].place = exhibition.place;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].txt = exhibition.txt;
+
+            $http.put("/exhibitions/" + exhibition.id, exhibition).then( function() {
+                showHideSuccMsg();
+            });     
+
+            
         }   
         
         
@@ -216,7 +223,9 @@ var itemId = $scope.selectedItem.id;
           //  }
             $scope.errMsgE = false; 
             var newExhbt = new exhibitService.Exhibition(name, image, time, place, txt);
-            var exhbCounter = $scope.exhibitions.length;
+
+            $http.post("/exhibitions", newExhbt).then( function() {
+                var exhbCounter = $scope.exhibitions.length;
             $scope.exhibitions.unshift(newExhbt);
                 $scope.name = "";
                 $scope.image = "";
@@ -225,11 +234,16 @@ var itemId = $scope.selectedItem.id;
                 $scope.time = "";
                 $scope.place = "";
                 $scope.txt = "";
-        
+                
+            });
+
         }
 
         $scope.deleteExhbt = function(exhibition) {
+            $http.delete("/exhibitions/" + exhibition.id).then( function() {
                 $scope.exhibitions.splice($scope.exhibitions.indexOf(exhibition), 1);
+            });
+                
         }   
 
        
