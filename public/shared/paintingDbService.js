@@ -42,8 +42,8 @@ app.factory('paintingDbService', function($http, $q) {
           // Loading the data from JSON
           $http.get("data/db.json").then(function(response) {
             // on success
-            // !!! movies = [];
-           // paintings.splice(0,paintings.length)
+            
+          paintings.splice(0,paintings.length)
             //$log.debug("PAINTING-APP: " + JSON.stringify(response));
             for(i = 0; i < response.data.paintings.length; i++) {
                 paintings.push(new Painting(response.data.paintings[i].name, response.data.paintings[i].image, response.data.paintings[i].title, response.data.paintings[i].size, response.data.paintings[i].technique, response.data.paintings[i].year, response.data.paintings[i].gallery, response.data.paintings[i].available,  response.data.paintings[i].comments, response.data.paintings[i].id));

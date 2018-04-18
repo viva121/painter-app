@@ -36,7 +36,7 @@ $('.my-file-input').on('change',function(){
     $scope.integerval = /^\d*$/;
 */
     $scope.addImg = function(name, image, title, size, technique, year, gallery, available) {
-        if(available == undefined){
+        if(available == undefined || available == null){
             available == false;
         }
         //console.log(name);
@@ -190,6 +190,8 @@ var itemId = $scope.selectedItem.id;
 
         $scope.errMsgE = false; 
         $scope.showSuccess = false;
+
+        // Save Edit Exhibition //////////////////////////////////////////////////////////////////
         $scope.saveEditExhb = function(exhibition) {
             
             if(exhibition.name == undefined || exhibition.name == "" || exhibition.image == undefined || exhibition.image == "" || exhibition.time == undefined || exhibition.time == "" ||  exhibition.place == undefined || exhibition.place == "" || exhibition.txt == undefined || exhibition.txt == "") {
@@ -205,6 +207,10 @@ var itemId = $scope.selectedItem.id;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].place = exhibition.place;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].txt = exhibition.txt;
 
+            if(exhibition.id == undefined) {
+                exhibition.id = lastId;
+            }
+
             $http.put("/exhibitions/" + exhibition.id, exhibition).then( function() {
                 showHideSuccMsg();
             });     
@@ -212,9 +218,9 @@ var itemId = $scope.selectedItem.id;
             
         }   
         
-        
-
-        $scope.addNewExhb = function(name, image, time, place, txt) {
+        // Add new Exhibition /////////////////////////////////////////////////////////////
+        var lastId;
+        $scope.addNewExhb = function() {
             //console.log(name);
           //  if(name == undefined || name == "" || image == undefined || image == "" || time == undefined || time == "" ||  place == undefined || place == "" || txt == undefined || txt == "") {
           //      $scope.errMsgE = true;
@@ -222,11 +228,28 @@ var itemId = $scope.selectedItem.id;
           //      return;
           //  }
             $scope.errMsgE = false; 
+            name = "";
+            image = "";
+            time = "";
+            place = "";
+            txt = "";
+            
             var newExhbt = new exhibitService.Exhibition(name, image, time, place, txt);
-
+            $scope.exhibitions.unshift(newExhbt);
             $http.post("/exhibitions", newExhbt).then( function() {
                 var exhbCounter = $scope.exhibitions.length;
-            $scope.exhibitions.unshift(newExhbt);
+
+                $http.get("/exhibitions/")
+                .then(function(response) {
+                    lastId = 0;
+                    for(var i =0; i < response.data.length; i++ ) {
+                        if (response.data[i].id > lastId) {
+                        lastId = response.data[i].id;
+                    }
+                    }
+                    
+                });
+
                 $scope.name = "";
                 $scope.image = "";
             //  $scope.editItem._attachments_uri_E.image = undefined;
