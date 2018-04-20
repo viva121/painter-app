@@ -47,14 +47,14 @@ $('.my-file-input').on('change',function(){
         return;
         }
         $scope.errMsg = false; 
-        showHideSuccMsg();
+        
         name = "Svetlana Lukash";
         var newImg = new paintingDbService.Painting(name, image, title, size, technique, year, gallery, available );
         
         $http.post("/paintings", newImg).then( function() {
             newImg.name = "Svetlana Lukash";
             $scope.paintings.push(newImg);
-            
+            showHideSuccMsg();
         });
         $scope.title = undefined;
             $scope.editItem._attachments_uri.image = undefined;
@@ -187,6 +187,7 @@ var itemId = $scope.selectedItem.id;
             $scope.showSuccess = false;
             }, 3000);
          };
+         
 
         $scope.errMsgE = false; 
         $scope.showSuccess = false;

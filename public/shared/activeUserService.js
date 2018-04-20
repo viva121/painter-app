@@ -65,11 +65,14 @@ app.factory("activeUserService", function ($http, $log, $q) {
         activeUser = null;
     }
 
+    
+
     return {
         load: load,
         login: login,
         getUser: getUser,
         isLoggedIn: isLoggedIn,
-        logout: logout
+        logout: logout,
+        
     }
 })
