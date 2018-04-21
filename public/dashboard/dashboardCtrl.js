@@ -20,21 +20,10 @@ app.controller('dashboardCtrl', function($scope, $http, $routeParams, $location,
     
 // Add New Image
 
-/* show file value after file select */
-
-//$scope.editItem = {};
-//$scope.showImgFile = function() {
-//    console.log("showImgFile");
-//    console.log($scope.editItem._attachments_uri.image);
-//}
+$scope.addImg = function(name, image, title, size, technique, year, gallery, available) {
+  paintingDbService.addImg(name, image, title, size, technique, year, gallery, available, $scope.errMsg, $scope.paintings);
+}
 /*
-$('.my-file-input').on('change',function(){
-  
-    $(this).next('.form-control-file').addClass("selected").html($(this).val());
-    })
-
-    $scope.integerval = /^\d*$/;
-*/
     $scope.addImg = function(name, image, title, size, technique, year, gallery, available) {
         if(available == undefined || available == null){
             available == false;
@@ -56,6 +45,10 @@ $('.my-file-input').on('change',function(){
             $scope.paintings.push(newImg);
             showHideSuccMsg();
         });
+        skopeToUndefined();
+       }
+*/
+    skopeToUndefined = function() {
         $scope.title = undefined;
             $scope.editItem._attachments_uri.image = undefined;
             $('#customFile').val("");
@@ -65,9 +58,13 @@ $('.my-file-input').on('change',function(){
             $scope.gallery = undefined;
             $scope.available = undefined;
             $scope.imgTxtP = "Choose image file...";
-       }
+    }   
 
 // Edit Existing Image
+    $scope.saveEditImg = function () {
+      paintingDbService.saveEditImg($scope.selectedItem, $scope.title, $scope.size, $scope.technique, $scope.year, $scope.gallery, $scope.available, $scope.hideModalEdit);
+    }
+      /*
        $scope.saveEditImg = function() {
         var itemId = $scope.selectedItem.id;
         paintingDbService.paintings[paintingDbService.paintings.indexOf($scope.selectedItem)].title = $scope.title;
@@ -83,9 +80,15 @@ $('.my-file-input').on('change',function(){
             
         });     
       }
-
-      $scope.deleteItem = function() {
-var itemId = $scope.selectedItem.id;
+*/
+ 
+$scope.deleteItem = function() {
+    paintingDbService.deleteItem($scope.selectedItem);
+    $scope.hideModalEdit = true;
+}
+/*
+$scope.deleteItem = function() {
+  var itemId = $scope.selectedItem.id;
         $http.delete("/paintings/" + itemId).then( function() {
             $scope.paintings.splice($scope.paintings.indexOf($scope.selectedItem), 1);
             $scope.hideModalEdit = true;
@@ -94,7 +97,7 @@ var itemId = $scope.selectedItem.id;
 
             
       }
-
+*/
       $scope.hideModal = true;
  
       $scope.showAddImg = function() {

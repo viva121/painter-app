@@ -60,12 +60,65 @@ app.factory('paintingDbService', function($http, $q) {
     
         return async.promise;
       }
-      
+     
+      saveEditImg = function(selectedItem, title, size, technique, year, gallery, available, hideModalEdit) {
+        var itemId = selectedItem.id;
+            paintings[paintings.indexOf(selectedItem)].title = title;
+            paintings[paintings.indexOf(selectedItem)].size = size;
+            paintings[paintings.indexOf(selectedItem)].technique = technique;
+            paintings[paintings.indexOf(selectedItem)].year = year;
+            paintings[paintings.indexOf(selectedItem)].gallery = gallery;
+            paintings[paintings.indexOf(selectedItem)].available = available;
+        $http.put("/paintings/" + itemId, selectedItem).then( function() {
+            
+
+            hideModalEdit = true;
+            
+        });     
+      }  
+
+      addImg = function(name, image, title, size, technique, year, gallery, available, errMsg, paintings) {
+        if(available == undefined || available == null){
+            available == false;
+        }
+        
+      if(image == "" || image == undefined || title == undefined ||  title == "" || size == undefined || size == "" || technique == undefined || technique == "" || year == undefined ||  year == "" || gallery == undefined || gallery == "" ) {
+           
+        errMsg = true;
+            
+        return;
+        }
+        errMsg = false; 
+        
+        //name = "Svetlana Lukash";
+        var newImg = new Painting(name, image, title, size, technique, year, gallery, available );
+        
+        $http.post("/paintings", newImg).then( function() {
+            newImg.name = "Svetlana Lukash";
+            paintings.push(newImg);
+            showHideSuccMsg();
+        });
+        skopeToUndefined();   
+       }
+    
+       deleteItem = function(selectedItem) {
+        var itemId = selectedItem.id;
+                $http.delete("/paintings/" + itemId).then( function() {
+                    paintings.splice(paintings.indexOf(selectedItem), 1);
+                  
+                    
+                });
+        
+                    
+              }   
 
     return {
             loadPaintings : loadPaintings,
             paintings : paintings,
-            Painting : Painting
+            Painting : Painting,
+            saveEditImg: saveEditImg,
+            addImg : addImg,
+            deleteItem : deleteItem
         }
 
 });
