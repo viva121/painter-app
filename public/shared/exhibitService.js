@@ -41,12 +41,21 @@ app.factory('exhibitService', function($http, $q) {
     
         return async.promise;
     }
-      
+     
+  deleteExhbt = function(exhibition) {
+      $http.delete("/exhibitions/" + exhibition.id).then( function() {
+          exhibitions.splice(exhibitions.indexOf(exhibition), 1);
+      });
+          
+  }   
+
+
 
     return {
         Exhibition : Exhibition,
         loadExibit : loadExibit,
-        exhibitions : exhibitions
+        exhibitions : exhibitions,
+        deleteExhbt : deleteExhbt
     }
 
 });

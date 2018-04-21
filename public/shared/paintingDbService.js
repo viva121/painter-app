@@ -15,7 +15,7 @@ app.factory('paintingDbService', function($http, $q) {
         this.comments = comments;
         this.id = id;
      }
-
+// Unic number generator (not in use)
      function uniqueNumber() {
         var date = Date.now();
         
@@ -34,10 +34,9 @@ app.factory('paintingDbService', function($http, $q) {
       return uniqueNumber();
     };
 
+// Loading painting  ////////////////////////////////////////////////////////////////////////    
      function loadPaintings() {
         var async = $q.defer();
-    
-        // Checking if the movies was ever loaded
         
           // Loading the data from JSON
           $http.get("data/db.json").then(function(response) {
@@ -53,14 +52,15 @@ app.factory('paintingDbService', function($http, $q) {
             
           }, function(response) {
             // on failure
-           // $log.error("MOVIE-APP: " + JSON.stringify(response));
+           // $log.error("PAINTER-APP: " + JSON.stringify(response));
             async.reject();
           });
         
     
         return async.promise;
       }
-     
+
+// Save edited painting  ///////////////////////////////////////////////////////////////      
       saveEditImg = function(selectedItem, title, size, technique, year, gallery, available, hideModalEdit) {
         var itemId = selectedItem.id;
             paintings[paintings.indexOf(selectedItem)].title = title;
@@ -77,6 +77,7 @@ app.factory('paintingDbService', function($http, $q) {
         });     
       }  
 
+// Add new painting  ///////////////////////////////////////////////////////////////      
       addImg = function(name, image, title, size, technique, year, gallery, available, errMsg, paintings) {
         if(available == undefined || available == null){
             available == false;
@@ -100,7 +101,8 @@ app.factory('paintingDbService', function($http, $q) {
         });
         skopeToUndefined();   
        }
-    
+
+  // Delete painting  ///////////////////////////////////////////////////////////////
        deleteItem = function(selectedItem) {
         var itemId = selectedItem.id;
                 $http.delete("/paintings/" + itemId).then( function() {

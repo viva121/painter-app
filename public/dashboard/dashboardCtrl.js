@@ -171,19 +171,26 @@ $scope.deleteItem = function() {
             $scope.showExhb = false;
         }
 
-      //  $scope.imgTxt = "Choose image file...";
-      //  $scope.showImgName = function() {
-      //  $scope.imgTxt = "File is chosen" //$scope.editItem._attachments_uri_E.image;
-      //  }
-
+        $scope.imgTxt = "Choose image file...";
+        showImgName = function() {
+            if($scope.image != undefined || $scope.image != null || $scope.image != "") {
+        $scope.imgTxt = "File is chosen" 
+            }
+        }
+        $scope.imgTxt = "Choose image file...";
+      $scope.showImgName = function() {
+      $scope.imgTxt = "File is chosen" //$scope.editItem._attachments_uri_E.image;
+      }
+/*
         $scope.showExbtDetails = function(exhibition) {
             $scope.name =  exhibition.name;
             $scope.image =  exhibition.image;
             $scope.time =  exhibition.time;
             $scope.place =  exhibition.place;
             $scope.txt =  exhibition.txt;
+            $scope.showImgName();
           }
-
+*/
         showHideSuccMsg = function() {
             $scope.showSuccess = true;
             $timeout(function() {
@@ -191,7 +198,7 @@ $scope.deleteItem = function() {
             }, 3000);
          };
          
-
+        showImgName();
         $scope.errMsgE = false; 
         $scope.showSuccess = false;
 
@@ -204,7 +211,7 @@ $scope.deleteItem = function() {
                      return;
             }
             $scope.errMsgE = false; 
-            
+           
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].name = exhibition.name;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].image = exhibition.image;
             exhibitService.exhibitions[exhibitService.exhibitions.indexOf(exhibition)].time = exhibition.time;
@@ -216,6 +223,7 @@ $scope.deleteItem = function() {
             }
 
             $http.put("/exhibitions/" + exhibition.id, exhibition).then( function() {
+                showImgName(); 
                 showHideSuccMsg();
             });     
 
@@ -237,7 +245,7 @@ $scope.deleteItem = function() {
             time = "";
             place = "";
             txt = "";
-            
+          
             var newExhbt = new exhibitService.Exhibition(name, image, time, place, txt);
             $scope.exhibitions.unshift(newExhbt);
             $http.post("/exhibitions", newExhbt).then( function() {
@@ -256,23 +264,26 @@ $scope.deleteItem = function() {
 
                 $scope.name = "";
                 $scope.image = "";
-            //  $scope.editItem._attachments_uri_E.image = undefined;
-            //  $('#customFile').val("");
+                $('#customFile').val("");
                 $scope.time = "";
                 $scope.place = "";
                 $scope.txt = "";
-                
+                $scope.imgTxt = "Choose image file...";
             });
 
         }
 
+    $scope.deleteExhbt = function (exhibition) {
+        exhibitService.deleteExhbt(exhibition);
+    }
+/*
         $scope.deleteExhbt = function(exhibition) {
             $http.delete("/exhibitions/" + exhibition.id).then( function() {
                 $scope.exhibitions.splice($scope.exhibitions.indexOf(exhibition), 1);
             });
                 
         }   
-
+*/
        
 
 });
