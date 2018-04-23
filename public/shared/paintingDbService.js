@@ -1,5 +1,5 @@
 app.factory('paintingDbService', function($http, $q) {
-    var galleries = [];
+  var galleries = [];   
 function Gallery(name, id) {
   this.name = name;
   this.id = id;
