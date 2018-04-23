@@ -3,20 +3,22 @@
     
                             <div class="btn-group" role="group" aria-label="Galleries">
                                     <button type="button" class="btn btn-secondary" ng-click="showAddImg()">Add Painting</button>
+                                    <button type="button" class="btn btn-secondary" ng-click="showAddGlry()">Add Gallery</button>
                                     <button type="button" class="btn btn-secondary" ng-click="sortBy('year')">Sort by date</button>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle my-btn-group-responsive" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           Galleries
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Flowers'}">Flowers</a>
-                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</a>
+                                            
+                                          <a class="dropdown-item" href="" ng-repeat="gllery in galleries" ng-click="changeGalleryFilterName(gllery.name)">{{gllery.name}}</a>
+                                         <!-- <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Still Life'}">Still Life</a>
                                           <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Landscape'}">Landscape</a>
                                           <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Seascape'}">Seascape</a>
                                           <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Nude'}">Nude</a>
                                           <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Graphics'}">Graphics</a>
                                           <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Portrait'}">Portrait</a>
-                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</a>
+                                          <a class="dropdown-item" href="" ng-click="filterGal = {gallery: 'Voyage'}">Voyage</a> -->
                                           <a class="dropdown-item" href="" ng-click="filterGal = undefined">Show All</a>
                                         </div>
                                       </div>
@@ -63,14 +65,14 @@
                       <input type="number" class="form-control input-img" id="" ng-model="year" placeholder="Enter Year"  required>
                       <select class="form-control input-img" ng-model="gallery" id=""  required>
                         <option value="" disabled selected>Sellect Gallery</option>
-                        <option>Flowers</option>
-                        <option>Still Life</option>
+                        <option ng-repeat="gllery in galleries" >{{gllery.name}}</option>
+                       <!-- <option>Still Life</option>
                         <option>Landscape</option>
                         <option>Seascape</option>
                         <option>Nude</option>
                         <option>Graphics</option>
                         <option>Portrait</option>
-                        <option>Voyage</option>
+                        <option>Voyage</option> -->
           </select>
           <div class="form-check">
                 <input class="form-check-input" ng-model="available" type="checkbox" value="" id="available">
@@ -113,14 +115,15 @@
                               <input type="number" class="form-control input-img" ng-model="year" id=""  placeholder="Enter Year"  required>
                               <select class="form-control" ng-model="gallery" id=""  required>
                                             <option value="" disabled selected>Sellect Gallery</option>
-                                            <option>Flowers</option>
+                                            <option ng-repeat="gllery in galleries" >{{gllery.name}}</option>
+                                           <!-- <option>Flowers</option>
                                             <option>Still Life</option>
                                             <option>Landscape</option>
                                             <option>Seascape</option>
                                             <option>Nude</option>
                                             <option>Graphics</option>
                                             <option>Portrait</option>
-                                            <option>Voyage</option>
+                                            <option>Voyage</option> -->
                               </select>
                               <div class="form-check">
                                 <input class="form-check-input" ng-model="available" type="checkbox" value="" id="available">
@@ -143,3 +146,23 @@
     
         </div>
 </div>
+<!-- Modal Add New Gallery -->
+<div class="modal-add-img" ng-hide="hideGlryModal">
+    <div class = "row">
+        <div class="col-sm-11">
+               <h4>Add New Gallery</h4>
+        </div>
+            
+        <div class="col-sm-1"><span class="float-right" ng-click="hideAddGlry()"><i class="fas fa-window-close"></i></span></div>
+    </div> 
+    <div class = "row">
+        <div class="col-sm-12">    
+    <input type="text" class="form-control input-img" ng-model="galleryName" id=""  placeholder="Enter New Gallery"  required>
+    </div>
+    </div>
+    <div class = "row">
+        <div class="col-sm-12">    
+    <button type="submit" class="btn btn-secondary btn-block" ng-click="addGallery(galleryName)">Add New Gallery</button>
+</div>
+</div>
+  </div>

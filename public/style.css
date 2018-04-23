@@ -53,15 +53,23 @@ div.galleries-btn-gr {
     background-color: #f5553f;
     border-color: #f5553f;
 }
-button.btn.btn-primary:active, button.btn.btn-primary:visited {
+.btn.btn-primary:active, .btn.btn-primary:visited, .btn-primary.active, .btn-primary.visited  {
     color: #fff !important;
     background-color: #f5553f !important;
-    border: none;
+    border-color: #f5553f !important;
+    border: none !important;
     border-bottom: none;
     border-top: none;
     border-left: none;
     border-right: none;
   /*  border-color: #f5553f !important; */
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border: none !important;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: 0 !important;
+    border: none !important;
 }
 .btn-secondary {
     color: #fff;
@@ -262,6 +270,10 @@ button.btn.btn-primary:active, button.btn.btn-primary:visited {
     max-height: 50vh;
 }
 
+.available.badge-secondary {
+    color: #fff;
+    background-color: #017c34;
+}
 .modalEdit {
     display:block;
     margin: 0 auto;

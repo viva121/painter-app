@@ -1,7 +1,38 @@
 app.factory('paintingDbService', function($http, $q) {
+    var galleries = [];
+function Gallery(name, id) {
+  this.name = name;
+  this.id = id;
+}
+
+function loadGalleries() {
+  var async = $q.defer();
+  
+    // Loading the data from JSON
+    $http.get("data/db.json").then(function(response) {
+      // on success
+      
+      galleries.splice(0,galleries.length)
+      //$log.debug("PAINTING-APP: " + JSON.stringify(response));
+      for(i = 0; i < response.data.galleries.length; i++) {
+        galleries.push(new Gallery(response.data.galleries[i].name,  response.data.galleries[i].id));
+        }
+
+      async.resolve();
+      
+    }, function(response) {
+      // on failure
+     // $log.error("PAINTER-APP: " + JSON.stringify(response));
+      async.reject();
+    });
+  
+
+  return async.promise;
+}
+
 
     var paintings = [];
-    var wasEverLoaded = false;
+//    var wasEverLoaded = false;
 
     function Painting(name, image, title, size, technique, year, gallery, available, comments, id) {
         this.name = name;
@@ -76,6 +107,26 @@ app.factory('paintingDbService', function($http, $q) {
             
         });     
       }  
+// Add new gallery  ///////////////////////////////////////////////////////////////    
+      addGallery = function(name, errMsg) {
+        if(name == "" || name == undefined ) {
+           
+          errMsg = true;
+              
+          return;
+          }
+          errMsg = false; 
+          var newGallery = new Gallery(name);
+          
+        $http.post("/galleries", newGallery).then( function() {
+            
+            galleries.push(newGallery);
+            showHideSuccMsg();
+        });
+         
+       }
+
+ 
 
 // Add new painting  ///////////////////////////////////////////////////////////////      
       addImg = function(name, image, title, size, technique, year, gallery, available, errMsg, paintings) {
@@ -93,9 +144,9 @@ app.factory('paintingDbService', function($http, $q) {
         
         //name = "Svetlana Lukash";
         var newImg = new Painting(name, image, title, size, technique, year, gallery, available );
-        
+          newImg.name = "Svetlana Lukash";
         $http.post("/paintings", newImg).then( function() {
-            newImg.name = "Svetlana Lukash";
+            
             paintings.push(newImg);
             showHideSuccMsg();
         });
@@ -120,7 +171,11 @@ app.factory('paintingDbService', function($http, $q) {
             Painting : Painting,
             saveEditImg: saveEditImg,
             addImg : addImg,
-            deleteItem : deleteItem
+            deleteItem : deleteItem,
+            loadGalleries : loadGalleries,
+            galleries : galleries,
+            Gallery :Gallery,
+            addGallery : addGallery
         }
 
 });

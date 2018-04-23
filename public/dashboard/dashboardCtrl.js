@@ -11,6 +11,10 @@ app.controller('dashboardCtrl', function($scope, $http, $routeParams, $location,
         $location.path('/');
     }
 
+    $scope.galleries = [];
+   paintingDbService.loadGalleries().then(function(){
+    $scope.galleries = paintingDbService.galleries;
+   });
 
     $scope.paintings = [];
     paintingDbService.loadPaintings().then(function() {
@@ -99,6 +103,8 @@ $scope.deleteItem = function() {
       }
 */
       $scope.hideModal = true;
+      $scope.hideModalEdit = true;
+      $scope.hideGlryModal = true;
  
       $scope.showAddImg = function() {
             $scope.hideModal = false;
@@ -116,7 +122,20 @@ $scope.deleteItem = function() {
            $scope.hideModal = true;
       }
 
-      $scope.hideModalEdit = true;
+    //  Add gallery ////////////////////////////////////////////////////////////  
+      $scope.showAddGlry = function() {
+        $scope.hideModal = true;
+        $scope.hideModalEdit = true;
+        $scope.hideGlryModal = false;
+      }
+      $scope.hideAddGlry = function() {
+        $scope.hideGlryModal = true;
+      }
+
+      $scope.addGallery = function(name) {
+        paintingDbService.addGallery(name, $scope.errMsg);
+      }
+      
 
       $scope.showEditImg = function(painting) {
             $scope.hideModal = true;
@@ -148,6 +167,19 @@ $scope.deleteItem = function() {
     $scope.propertyName = propertyName;
   };
   
+  $scope.changeGalleryFilterName = function (filter) {
+    $scope.chosenFilter = filter;
+}
+
+$scope.filterGal = function (painting) {
+    
+    if($scope.chosenFilter == undefined || $scope.chosenFilter == painting.gallery) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
     //  Exhibitions ///////////////////////////////////////////////////////////////////////////////////////////////////
       $scope.exhibitions = [];
       exhibitService.loadExibit().then(function() {

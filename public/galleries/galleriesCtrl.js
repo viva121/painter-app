@@ -7,11 +7,15 @@ app.controller('galleriesCtrl', function($scope, $location, $uibModal, paintingD
    $scope.logout = function() {
        activeUserService.logout()
    }
+   $scope.galleries = [];
+   paintingDbService.loadGalleries().then(function(){
+    $scope.galleries = paintingDbService.galleries;
+   });
    
     $scope.paintings = [];
     paintingDbService.loadPaintings().then(function() {
         $scope.paintings = paintingDbService.paintings;
-    }) 
+    }); 
 
     $scope.hideModal = true;
  
@@ -27,6 +31,19 @@ app.controller('galleriesCtrl', function($scope, $location, $uibModal, paintingD
             $scope.availability = "Yes";
         } else {
             $scope.availability = "No";
+        }
+    }
+
+    $scope.changeGalleryFilterName = function (filter) {
+        $scope.chosenFilter = filter;
+    }
+
+    $scope.filterGal = function (painting) {
+        
+        if($scope.chosenFilter == undefined || $scope.chosenFilter == painting.gallery) {
+            return true;
+        } else {
+            return false;
         }
     }
         
