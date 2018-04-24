@@ -12,10 +12,10 @@ app.factory("activeUserService", function ($http, $log, $q) {
     function load() {
         var async = $q.defer();
 
-        $http.get('data/users.json').then(
+        $http.get('data/db.json').then(
             function (response) {
-                for (var i = 0; i < response.data.length; i++) {
-                    users.push(new User(response.data[i]));
+                for (var i = 0; i < response.data.users.length; i++) {
+                    users.push(new User(response.data.users[i]));
                 }
 
                 async.resolve();
@@ -36,11 +36,11 @@ app.factory("activeUserService", function ($http, $log, $q) {
     function login(email, pwd) {
         var async = $q.defer();
 
-        $http.get('data/users.json').then(
+        $http.get('data/db.json').then(
             function (response) {
-                for (var i = 0; i < response.data.length; i++) {
-                    if (response.data[i].email === email && response.data[i].password === pwd) {
-                        activeUser = new User(response.data[i]);
+                for (var i = 0; i < response.data.users.length; i++) {
+                    if (response.data.users[i].email === email && response.data.users[i].password === pwd) {
+                        activeUser = new User(response.data.users[i]);
                         async.resolve(true);
                     }                
                 }
