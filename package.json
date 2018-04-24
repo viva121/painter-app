@@ -12,7 +12,8 @@
   ],
   "author": "Jesper Orb",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "json-server": "^0.12.1"
   }
 }
