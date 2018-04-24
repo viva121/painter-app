@@ -92,7 +92,7 @@ function loadGalleries() {
       }
 
 // Save edited painting  ///////////////////////////////////////////////////////////////      
-      saveEditImg = function(selectedItem, title, size, technique, year, gallery, available, hideModalEdit) {
+      saveEditImg = function(selectedItem, title, size, technique, year, gallery, available, id, hideModalEdit) {
         var itemId = selectedItem.id;
             paintings[paintings.indexOf(selectedItem)].title = title;
             paintings[paintings.indexOf(selectedItem)].size = size;
@@ -121,7 +121,7 @@ function loadGalleries() {
         $http.post("/galleries", newGallery).then( function() {
             
             galleries.push(newGallery);
-            showHideSuccMsg();
+          //  showHideSuccMsg();
         });
          
        }

@@ -66,7 +66,10 @@ $scope.addImg = function(name, image, title, size, technique, year, gallery, ava
 
 // Edit Existing Image
     $scope.saveEditImg = function () {
-      paintingDbService.saveEditImg($scope.selectedItem, $scope.title, $scope.size, $scope.technique, $scope.year, $scope.gallery, $scope.available, $scope.hideModalEdit);
+      paintingDbService.saveEditImg($scope.selectedItem, $scope.title, $scope.size, $scope.technique, $scope.year, $scope.gallery, $scope.available, $scope.selectedItem.id, $scope.hideModalEdit)
+      //.then(function(){
+        $scope.hideModalEdit = true;
+      // });
     }
       /*
        $scope.saveEditImg = function() {
@@ -134,6 +137,7 @@ $scope.deleteItem = function() {
 
       $scope.addGallery = function(name) {
         paintingDbService.addGallery(name, $scope.errMsg);
+        $scope.hideAddGlry(); 
       }
       
 
