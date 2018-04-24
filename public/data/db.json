@@ -31,14 +31,6 @@
     {
       "name": "Voyage",
       "id": 7
-    },
-    {
-      "name": "new",
-      "id": 8
-    },
-    {
-      "name": "new 2",
-      "id": 9
     }
   ],
   "paintings": [
@@ -231,7 +223,7 @@
   ],
   "users": [
     {
-      "email": "svetlana@svetalukashart.com",
+      "email": "s@s.com",
       "password": "asdf",
       "fname": "Svetlana",
       "lname": "Lukash",
