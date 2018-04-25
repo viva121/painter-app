@@ -216,7 +216,10 @@ div.galleries-btn-gr {
    transition: opacity .15s linear; 
     animation: fadeIn .2s ease-in-out .2s forwards;
 }
-*/	
+*/
+.fas.fa-window-close {
+    font-size: 2em;
+}	
 .fade {
 	opacity: 0;
 	animation-name: fadeInOpacity;
@@ -430,7 +433,17 @@ div.galleries-btn-gr {
     padding-top: 70px;
     padding-bottom: 75px;
 }
+.modal-add-img {
+    width:80%;
+}
 
+}
+
+@media (max-width:767px)  {
+    .modalEdit {
+        height: 200px !important;
+        width: auto;
+      }
 }
 
 @media (max-width: 576px)  {
@@ -445,7 +458,9 @@ div.galleries-btn-gr {
         padding-top: 50px;
         padding-bottom: 45px;
     }
-    
+    .modal-add-img {
+        width:95%;
+    }
 }
 
 

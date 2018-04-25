@@ -1,7 +1,7 @@
 {
   "name": "json-server-heroku",
   "version": "1.0.0",
-  "description": "Simple json-base database to deploy to Heroku",
+  "description": "Painter App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,7 +10,7 @@
   "keywords": [
     "json-server,heroku, node, REST API"
   ],
-  "author": "Jesper Orb",
+  "author": "Vadim Kachko",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
